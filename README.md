@@ -31,11 +31,14 @@ Config URL variables based on your preferable local setup. URL will be used for 
 
 Default localhost port configuration:
 
-```
+```env
+#platform projects:
 GATSBY_WEBSITE_URL=http://localhost:8100
 GATSBY_DOCS_URL=http://localhost:8200
 GATSBY_MARKETPLACE_URL=http://localhost:8300
-GATSBY_SITE_URL=http://localhost:8300
+
+# match port number of the project you work on:
+GATSBY_SITE_URL=http://localhost:{project port}
 ```
 
 **Start development server**
