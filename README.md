@@ -8,18 +8,6 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f86ac67b-b1aa-41a7-95ec-3a2d14cb3bad/deploy-status)](https://app.netlify.com/sites/substrate-website/deploys)
 
-## Content contribution, PRs and merging flow
-
-- PR providing content (`json`, `md`...): open PR against `main` branch (production)
-- PR providing new features: open PR against `develop` branch
-- PR providing `hotfixes` open only against `main` (fixes will be merged into `develop` with next features)
-
-**Deploying new features**
-
-- `develop` <- `main`: update content and fixes
-- `develop` <- `feature/branch`: merging feature PRs
-- `main` <- `develop`: deploying new release to production
-
 ## Development
 
 ### Install
@@ -36,12 +24,18 @@ Copy `example.env.development` and rename to `.env.development`
 
 Config URL variables based on your preferable local setup. URL will be used for links generation between documentation and platform stack
 
-- `GATSBY_WEBSITE_URL`: represents this project (Substrate website)
-- `GATSBY_DOCS_URL` represents project serving documentation
+- `GATSBY_WEBSITE_URL`: Substrate website (repo: https://github.com/paritytechmarcomms/substrate-website)
+- `GATSBY_DOCS_URL` Substrate Docs website (repo: https://github.com/paritytechmarcomms/substrate-docs)
+- `GATSBY_MARKETPLACE_URL`: Substrate Marketplace website (repo: https://github.com/paritytechmarcomms/substrate-marketplace)
+- `GATSBY_SITE_URL`: represent this project
+
+Default localhost port configuration:
 
 ```
-GATSBY_WEBSITE_URL=http://localhost:8000
-GATSBY_DOCS_URL=http://localhost:8001
+GATSBY_WEBSITE_URL=http://localhost:8100
+GATSBY_DOCS_URL=http://localhost:8200
+GATSBY_MARKETPLACE_URL=http://localhost:8300
+GATSBY_SITE_URL=http://localhost:8300
 ```
 
 **Start development server**
