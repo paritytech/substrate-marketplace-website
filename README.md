@@ -6,7 +6,7 @@
 <h1 align="center">Substrate Marketplace</h1>
 <h3 align="center">https://marketplace.substrate.io</h3>
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/f86ac67b-b1aa-41a7-95ec-3a2d14cb3bad/deploy-status)](https://app.netlify.com/sites/substrate-website/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e272476c-83f0-42cd-aafb-eda3eacbc2c3/deploy-status)](https://app.netlify.com/sites/substrate-marketplace/deploys)
 
 ## Development
 
