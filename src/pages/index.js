@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import { getImage } from 'gatsby-plugin-image';
 import React from 'react';
 
-import Card from '../components/layout/marketplace/Card';
+import Card from '../components/layout/marketplace/HomepageCard';
 import Section from '../components/layout/Section';
 import Layout from '../components/site/Layout';
 import SEO from '../components/site/SEO';

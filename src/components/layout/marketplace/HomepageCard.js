@@ -7,6 +7,7 @@ import SecondaryButton from '../../ui/SecondaryButton';
 export default function Card({ title, text, link, image }) {
   return (
     <div
+      data-aos="fade-up"
       className={cx(
         'bg-substrateGray-light rounded-md mb-4 lg:mx-4 lg:mb-8 md:md-10 shadow-md lg:w-[438px] xl:w-[540px]',
         'hover:scale-105 transition-transform'
