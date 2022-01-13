@@ -4,7 +4,7 @@ import React from 'react';
 
 import { Link } from '../default/Link';
 
-const SecondaryButton = ({ children, link, hero }) => {
+const SecondaryButton = ({ children, link, hero, fullWidth }) => {
   return (
     <Link to={link}>
       <div
@@ -13,6 +13,7 @@ const SecondaryButton = ({ children, link, hero }) => {
           {
             'px-8 py-4 text-xl': hero,
             'px-5 py-2': !hero,
+            'w-full sm:w-auto': fullWidth,
           }
         )}
       >
