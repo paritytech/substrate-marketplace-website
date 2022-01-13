@@ -89,6 +89,7 @@ import externalLink from '../../images/svg/ui/external-link.svg';
 import hamburger from '../../images/svg/ui/hamburger-toggle.svg';
 import moon from '../../images/svg/ui/moon.svg';
 import play from '../../images/svg/ui/play.svg';
+import searchIcon from '../../images/svg/ui/search.svg';
 import sidebarToggle from '../../images/svg/ui/sidebar-toggle.svg';
 import star from '../../images/svg/ui/star.svg';
 import sun from '../../images/svg/ui/sun.svg';
@@ -154,6 +155,7 @@ const iconsMap = {
   'diamond-green': diamondGreen,
   play: play,
   tools: tools,
+  searchIcon: searchIcon,
   /* mockup */
   placeholder: placeholder,
   /* social */
