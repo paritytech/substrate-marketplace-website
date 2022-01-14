@@ -21,7 +21,7 @@ export default function Card({ title, text, link, image }) {
           alt={`Substrate Marketplace ${title}`}
         />
         <div className="p-6 lg:p-9">
-          <p className="text-2xl font-bold">{title}</p>
+          <p className="text-2xl lg:text-4xl font-bold">{title}</p>
           <p className="sm:h-14">{text}</p>
           <div className="text-center sm:text-left">
             <SecondaryButton fullWidth hero>
