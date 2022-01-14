@@ -11,11 +11,12 @@ export default function Card({ title, text, link, image }) {
       <div
         className={cx(
           'bg-substrateGray-light rounded-md mb-4 lg:mx-4 lg:mb-8 md:md-10 shadow-md lg:w-[438px] xl:w-[540px]',
-          'hover:scale-105 transition-transform'
+          'hover:scale-105 transition-transform',
+          'dark:bg-substrateBlackish'
         )}
       >
         <GatsbyImage
-          className="block h-28 object-cover rounded-t-md transform transition-all duration-300 ease-in-out"
+          className="block h-28 object-cover rounded-t-md"
           image={image}
           alt={`Substrate Marketplace ${title}`}
         />
