@@ -1,11 +1,12 @@
 import cx from 'classnames';
-import { GatsbyImage } from 'gatsby-plugin-image';
+import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
 
 import { Link } from '../../default/Link';
 import SecondaryButton from '../../ui/SecondaryButton';
 
-export default function Card({ title, text, link, image }) {
+export default function Card({ title, text, link }) {
+  const imageStyles = 'block h-28 object-cover rounded-t-md';
   return (
     <Link to={link}>
       <div
@@ -15,13 +16,27 @@ export default function Card({ title, text, link, image }) {
           'dark:bg-substrateBlackish'
         )}
       >
-        <GatsbyImage
-          className="block h-28 object-cover rounded-t-md"
-          image={image}
-          alt={`Substrate Marketplace ${title}`}
-        />
+        {title === 'runtimes' ? (
+          <StaticImage
+            className={imageStyles}
+            src="../../../../media/images/runtimes-home.jpg"
+            alt={`Substrate Marketplace ${title}`}
+          />
+        ) : title === 'pallets' ? (
+          <StaticImage
+            className={imageStyles}
+            src="../../../../media/images/pallets-home.jpg"
+            alt={`Substrate Marketplace ${title}`}
+          />
+        ) : (
+          <StaticImage
+            className={imageStyles}
+            src="../../../../media/images/projects-home.jpg"
+            alt={`Substrate Marketplace ${title}`}
+          />
+        )}
         <div className="p-6 lg:p-9">
-          <p className="text-2xl lg:text-4xl font-bold">{title}</p>
+          <p className="text-2xl lg:text-4xl font-bold capitalize">{title}</p>
           <p className="sm:h-14">{text}</p>
           <div className="text-center sm:text-left">
             <SecondaryButton fullWidth hero>
