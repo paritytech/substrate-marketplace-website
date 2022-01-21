@@ -1,12 +1,13 @@
 import cx from 'classnames';
-import { StaticImage } from 'gatsby-plugin-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import React from 'react';
 
 import { Link } from '../../default/Link';
 import SecondaryButton from '../../ui/SecondaryButton';
 
-export default function Card({ title, text, link }) {
+export default function Card({ title, text, link, image }) {
   const imageStyles = 'block h-28 object-cover rounded-t-md';
+  const cardImage = getImage(image);
   return (
     <Link to={link}>
       <div
@@ -16,25 +17,7 @@ export default function Card({ title, text, link }) {
           'dark:bg-substrateBlackish'
         )}
       >
-        {title === 'runtimes' ? (
-          <StaticImage
-            className={imageStyles}
-            src="../../../../media/images/runtimes-home.jpg"
-            alt={`Substrate Marketplace ${title}`}
-          />
-        ) : title === 'pallets' ? (
-          <StaticImage
-            className={imageStyles}
-            src="../../../../media/images/pallets-home.jpg"
-            alt={`Substrate Marketplace ${title}`}
-          />
-        ) : (
-          <StaticImage
-            className={imageStyles}
-            src="../../../../media/images/projects-home.jpg"
-            alt={`Substrate Marketplace ${title}`}
-          />
-        )}
+        <GatsbyImage className={imageStyles} image={cardImage} alt={`Substrate Marketplace ${title}`} />
         <div className="p-6 lg:p-9">
           <p className="text-2xl lg:text-4xl font-bold capitalize">{title}</p>
           <p className="sm:h-14">{text}</p>

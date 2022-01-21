@@ -1,13 +1,14 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 
-import HomepageCards from '../components/layout/marketplace/HomepageCards';
+import HomepageCards from '../components/layout/marketplace/CardsList';
 import Section from '../components/layout/Section';
 import Layout from '../components/site/Layout';
 import SEO from '../components/site/SEO';
 import SearchMarketplace from '../components/ui/SearchMarketplace';
 
-export default function Home() {
+export default function Home({ data }) {
+  const { content } = data;
   return (
     <Layout mode="full">
       <SEO title="Home" />
@@ -22,7 +23,7 @@ export default function Home() {
         <SearchMarketplace />
       </Section>
       <Section className="flex justify-center">
-        <HomepageCards />
+        <HomepageCards data={content.edges} />
       </Section>
     </Layout>
   );
@@ -36,6 +37,23 @@ export const query = graphql`
           ns
           data
           language
+        }
+      }
+    }
+    content: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "//(categories)/" } }) {
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            link
+            description
+            image {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+          }
         }
       }
     }
