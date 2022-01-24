@@ -54,6 +54,19 @@ module.exports = {
       },
     },
 
+    /* fetch data from external graphql endpoint */
+    {
+      resolve: 'gatsby-source-graphql',
+      options: {
+        // Arbitrary name for the remote schema Query type
+        typeName: 'marketplace',
+        // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
+        fieldName: 'marketplace',
+        // Url to query from
+        url: 'https://marketplace-api-staging.substrate.dev/graphql',
+      },
+    },
+
     /* source file system for (code based) icon images (svg) */
     {
       resolve: `gatsby-source-filesystem`,
