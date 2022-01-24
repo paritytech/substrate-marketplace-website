@@ -56,7 +56,7 @@ const createProjectPages = async ({ graphql, actions }) => {
     console.log(slug);
     createPage({
       path: `projects/${slug}/`,
-      component: path.resolve(`./src/templates/singular.js`),
+      component: path.resolve(`./src/templates/single.js`),
       context: {
         slug,
         node,
