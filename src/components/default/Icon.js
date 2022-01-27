@@ -87,8 +87,10 @@ import diamondYellow from '../../images/svg/ui/diamond-yellow.svg';
 import docs from '../../images/svg/ui/docs.svg';
 import externalLink from '../../images/svg/ui/external-link.svg';
 import hamburger from '../../images/svg/ui/hamburger-toggle.svg';
+import link from '../../images/svg/ui/link.svg';
 import moon from '../../images/svg/ui/moon.svg';
 import play from '../../images/svg/ui/play.svg';
+import repo from '../../images/svg/ui/repo.svg';
 import sidebarToggle from '../../images/svg/ui/sidebar-toggle.svg';
 import star from '../../images/svg/ui/star.svg';
 import sun from '../../images/svg/ui/sun.svg';
@@ -154,6 +156,8 @@ const iconsMap = {
   'diamond-green': diamondGreen,
   play: play,
   tools: tools,
+  repo: repo,
+  link: link,
   /* mockup */
   placeholder: placeholder,
   /* social */
