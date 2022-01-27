@@ -202,33 +202,22 @@ module.exports = {
         // useAutoGen: required 'true' to use autogen
         useAutoGen: true,
         // autoGenHomeLabel: optional 'Home' is default
-        autoGenHomeLabel: `Home`,
+        autoGenHomeLabel: `Marketplace`,
         // exclude: optional, include this array to exclude paths you don't want to
         // generate breadcrumbs for (see below for details).
-        exclude: [
-          `**/dev-404-page/**`,
-          `**/404/**`,
-          `**/404.html`,
-          `**/offline-plugin-app-shell-fallback/**`,
-          `**/ecosystem/`,
-        ],
-        // crumbLabelUpdates: optional, update specific crumbLabels in the path
+        exclude: [`**/dev-404-page/**`, `**/404/**`, `**/404.html`, `**/offline-plugin-app-shell-fallback/**`],
         crumbLabelUpdates: [
           {
-            pathname: '/ecosystem',
-            crumbLabel: 'Ecosystem',
+            pathname: '/projects',
+            crumbLabel: 'Projects',
           },
           {
-            pathname: '/ecosystem/opportunities',
-            crumbLabel: 'Opportunities',
+            pathname: '/runtimes',
+            crumbLabel: 'Runtimes',
           },
           {
-            pathname: '/ecosystem/resources',
-            crumbLabel: 'Resources',
-          },
-          {
-            pathname: '/ecosystem/connect',
-            crumbLabel: 'Connect',
+            pathname: '/pallets',
+            crumbLabel: 'Pallets',
           },
         ],
       },

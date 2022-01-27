@@ -2,8 +2,8 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 
-import Section from '../components/layout/Section';
 import Layout from '../components/site/Layout';
+import NavBreadcrumb from '../components/site/NavBreadcrumb';
 import SEO from '../components/site/SEO';
 
 export default function SingularPage({ pageContext }) {
@@ -11,12 +11,18 @@ export default function SingularPage({ pageContext }) {
   const { name, description } = node;
 
   return (
-    <Layout mode="full">
+    <Layout>
       <SEO title={name} />
-      <Section>
-        <h1 className="mb-20 mt-20 md:mt-52 text-4xl sm:text-5xl md:text-6xl font-body font-extrabold">{name}</h1>
-        <p>{description}</p>
-      </Section>
+      <article className="container flex flex-col lg:flex-row">
+        <div className="flex-grow mt-2 mb-20">
+          <div className="mb-12">
+            <NavBreadcrumb />
+          </div>
+          <h1 className="">{name}</h1>
+          <p>{description}</p>
+        </div>
+        <div className="w-full lg:w-60 bg-red-200">SideBar</div>
+      </article>
     </Layout>
   );
 }
