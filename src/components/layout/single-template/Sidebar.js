@@ -27,11 +27,9 @@ export default function Sidebar({ data }) {
           <div className="ml-4">{categories}</div>
         </ListSection>
       )}
-      {license && (
-        <ListSection title="License">
-          <div className="ml-4">{license}</div>
-        </ListSection>
-      )}
+      <ListSection title="License">
+        <div className="ml-4">{license ? { license } : 'N/A'}</div>
+      </ListSection>
       <Disclaimer />
     </div>
   );
