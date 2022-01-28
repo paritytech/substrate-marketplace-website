@@ -6,10 +6,12 @@ import Sidebar from '../components/layout/single-template/Sidebar';
 import Layout from '../components/site/Layout';
 import NavBreadcrumb from '../components/site/NavBreadcrumb';
 import SEO from '../components/site/SEO';
+import ProjectLogo from '../components/ui/ProjectLogo';
 
 export default function SingularPage({ pageContext }) {
   const { node } = pageContext;
   const { name, description } = node;
+
   return (
     <Layout>
       <SEO title={name} />
@@ -20,7 +22,10 @@ export default function SingularPage({ pageContext }) {
           <div className="mb-12">
             <NavBreadcrumb />
           </div>
-          <h1>{name}</h1>
+          <div className="flex">
+            <ProjectLogo name={name} />
+            <h1 className="font-body">{name}</h1>
+          </div>
           <p>{description}</p>
         </div>
         <Sidebar data={node} />
