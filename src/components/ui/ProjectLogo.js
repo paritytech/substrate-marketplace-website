@@ -9,11 +9,11 @@ export default function ProjectLogo({ name }) {
     return logo.node.name.toLowerCase() === name.toLowerCase();
   });
   const thisLogo = getImage(findLogo.node.logo[0]);
-  const imageStyles = 'w-10 h-10 sm:w-12 sm:h-12 lg:w-[60px] lg:h-[60px] mr-5 sm:mt-1';
+  const imageStyles = 'w-12 h-12 lg:w-[60px] lg:h-[60px] mr-5 sm:mt-1';
   return (
     <>
       {thisLogo ? (
-        <GatsbyImage className={imageStyles} image={thisLogo} alt={name} />
+        <GatsbyImage className={imageStyles} objectFit="contain" image={thisLogo} alt={name} />
       ) : (
         <img className={imageStyles} src={findLogo.node.publicURL} alt={name} />
       )}

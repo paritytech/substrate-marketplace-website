@@ -22,7 +22,7 @@ export default function SingularPage({ pageContext }) {
           <div className="mb-12">
             <NavBreadcrumb />
           </div>
-          <div className="flex">
+          <div className="flex flex-col lg:flex-row">
             <ProjectLogo name={name} />
             <h1 className="font-body">{name}</h1>
           </div>
