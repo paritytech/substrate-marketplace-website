@@ -7,7 +7,7 @@ import ListSection from './ListSection';
 export default function Sidebar({ data }) {
   const { homepage, repository, listingInsights, projectRelations, categories, license } = data;
   return (
-    <div className="w-full lg:w-60 p-1">
+    <div className="w-full lg:w-60 lg:p-1">
       <ListSection title="Developer Links">
         {homepage && <ListItems section="dev" data={homepage} />}
         {repository && <ListItems section="dev" type="repo" data={repository} />}
