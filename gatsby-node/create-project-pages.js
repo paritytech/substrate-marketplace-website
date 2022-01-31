@@ -53,13 +53,14 @@ const createProjectPages = async ({ graphql, actions }) => {
 
   result.data.marketplace.search.results.forEach(node => {
     const slug = slugify(node.name);
-    console.log(slug);
+    const section = 'projects';
     createPage({
-      path: `projects/${slug}/`,
+      path: `${section}/${slug}/`,
       component: path.resolve(`./src/templates/single.js`),
       context: {
         slug,
         node,
+        section,
       },
     });
   });

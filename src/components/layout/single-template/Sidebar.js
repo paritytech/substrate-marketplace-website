@@ -4,7 +4,7 @@ import Disclaimer from './Disclaimer';
 import ListItems from './ListItems';
 import ListSection from './ListSection';
 
-export default function Sidebar({ data }) {
+export default function Sidebar({ data, section }) {
   const { homepage, repository, listingInsights, projectRelations, categories, license } = data;
   return (
     <div className="w-full lg:w-60 p-1">
@@ -17,7 +17,7 @@ export default function Sidebar({ data }) {
           <ListItems section="insights" data={listingInsights} />
         </ListSection>
       )}
-      {projectRelations.relations.length > 0 && (
+      {section === 'projects' && projectRelations.relations.length > 0 && (
         <ListSection title="Runtimes">
           <ListItems section="runtimes" data={projectRelations.relations} />
         </ListSection>
