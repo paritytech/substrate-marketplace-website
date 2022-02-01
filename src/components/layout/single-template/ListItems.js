@@ -1,3 +1,4 @@
+import cx from 'classnames';
 import React from 'react';
 
 import Icon from '../../default/Icon';
@@ -44,9 +45,34 @@ const Runtimes = ({ data }) => (
   </ul>
 );
 
+const Lists = ({ section, data }) => {
+  return (
+    <>
+      {section === 'forwardDependencies' && <div className={cx('font-semibold ml-4 mb-2')}>Using:</div>}
+      {section === 'reverseDependencies' && <label className={cx('font-semibold ml-4 mb-2')}>Used by:</label>}
+      <ul
+        className={cx(
+          'overflow-auto overscroll-contain shadow-inner ml-4',
+          { 'h-64 border': data.length > 9 },
+          unorderedListClass
+        )}
+      >
+        {data.map((each, index) => {
+          const slug = each.dependency.type.toLowerCase() + 's';
+          return (
+            <li key={index} className="ml-2">
+              <Link to={`/${slug}/${each.dependency.name}`}>{each.dependency.name}</Link>
+            </li>
+          );
+        })}
+      </ul>
+    </>
+  );
+};
+
 const List = ({ data }) => (
   <ul className={unorderedListClass}>
-    <li className="ml-4">{data}</li>
+    <li className="ml-4 capitalize">{data}</li>
   </ul>
 );
 
@@ -59,6 +85,10 @@ export default function ListItems({ section, data, type }) {
         <Insights data={data} />
       ) : section === 'runtimes' ? (
         <Runtimes data={data} />
+      ) : section === 'forwardDependencies' ? (
+        <Lists section={section} data={data} />
+      ) : section === 'reverseDependencies' ? (
+        <Lists section={section} data={data} />
       ) : (
         <List dat={data} />
       )}

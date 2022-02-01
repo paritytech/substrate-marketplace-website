@@ -9,7 +9,7 @@ import SEO from '../components/site/SEO';
 // import ProjectLogo from '../components/ui/ProjectLogo';
 
 export default function SingularPage({ pageContext }) {
-  const { node } = pageContext;
+  const { node, section } = pageContext;
   const { name, description } = node;
 
   return (
@@ -28,7 +28,7 @@ export default function SingularPage({ pageContext }) {
           </div>
           <p className="max-w-4xl">{description}</p>
         </div>
-        <Sidebar data={node} />
+        <Sidebar data={node} section={section} />
       </article>
     </Layout>
   );

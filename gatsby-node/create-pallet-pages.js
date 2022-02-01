@@ -6,23 +6,27 @@ const { slugify } = require('../src/utils/url');
    - all graphql function call returns a Promise
  */
 
-const createProjectPages = async ({ graphql, actions }) => {
+const createPalletPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const result = await graphql(`
     {
       marketplace {
-        search(category: "", query: "", type: PROJECT) {
+        search(category: "", query: "", type: PALLET) {
           results {
-            ... on marketplace_Project {
+            ... on marketplace_Pallet {
               id
+              compatibilityVersion
               name
               authors
               description
+              documentation
               version
               categories
               repository
               homepage
               license
+              totalDownloads
+              readme
               listingInsights {
                 insights {
                   id
@@ -31,16 +35,22 @@ const createProjectPages = async ({ graphql, actions }) => {
                 }
                 stars
               }
-              readme
-              documentation
-              projectRelations {
-                relations {
-                  listing {
+              forwardDependencies {
+                dependencies {
+                  dependency {
                     name
                     type
                     version
                   }
-                  relationType
+                }
+              }
+              reverseDependencies {
+                dependencies {
+                  dependency {
+                    name
+                    type
+                    version
+                  }
                 }
               }
             }
@@ -53,18 +63,19 @@ const createProjectPages = async ({ graphql, actions }) => {
 
   result.data.marketplace.search.results.forEach(node => {
     const slug = slugify(node.name);
-    console.log(slug);
+    const section = 'pallets';
     createPage({
-      path: `projects/${slug}/`,
+      path: `${section}/${slug}/`,
       component: path.resolve(`./src/templates/single.js`),
       context: {
         slug,
         node,
+        section,
       },
     });
   });
 };
 
 module.exports = {
-  createProjectPages,
+  createPalletPages,
 };

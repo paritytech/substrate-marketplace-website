@@ -4,8 +4,17 @@ import Disclaimer from './Disclaimer';
 import ListItems from './ListItems';
 import ListSection from './ListSection';
 
-export default function Sidebar({ data }) {
-  const { homepage, repository, listingInsights, projectRelations, categories, license } = data;
+export default function Sidebar({ data, section }) {
+  const {
+    homepage,
+    repository,
+    listingInsights,
+    projectRelations,
+    forwardDependencies,
+    reverseDependencies,
+    categories,
+    license,
+  } = data;
   return (
     <div className="w-full lg:w-60 lg:p-1">
       <ListSection title="Developer Links">
@@ -17,7 +26,20 @@ export default function Sidebar({ data }) {
           <ListItems section="insights" data={listingInsights} />
         </ListSection>
       )}
-      {projectRelations.relations.length > 0 && (
+
+      {section != 'projects' && (
+        <ListSection title="Dependencies">
+          {forwardDependencies.dependencies.length > 0 ? (
+            <ListItems section="forwardDependencies" data={forwardDependencies.dependencies} />
+          ) : reverseDependencies.dependencies.length > 0 ? (
+            <ListItems section="reverseDependencies" data={reverseDependencies.dependencies} />
+          ) : (
+            <div className="ml-4">None</div>
+          )}
+        </ListSection>
+      )}
+
+      {section === 'projects' && projectRelations.relations.length > 0 && (
         <ListSection title="Runtimes">
           <ListItems section="runtimes" data={projectRelations.relations} />
         </ListSection>
@@ -28,7 +50,7 @@ export default function Sidebar({ data }) {
         </ListSection>
       )}
       <ListSection title="License">
-        <div className="ml-4">{license ? { license } : 'N/A'}</div>
+        <div className="ml-4">{license ? license : 'N/A'}</div>
       </ListSection>
       <Disclaimer />
     </div>
