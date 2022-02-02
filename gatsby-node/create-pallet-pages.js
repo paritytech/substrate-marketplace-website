@@ -1,5 +1,6 @@
 const path = require('path');
 const { slugify } = require('../src/utils/url');
+const { fetchMarkdown } = require('../src/utils/fetchMarkdown.js');
 
 /*
    Notes:
@@ -64,6 +65,8 @@ const createPalletPages = async ({ graphql, actions }) => {
   result.data.marketplace.search.results.forEach(node => {
     const slug = slugify(node.name);
     const section = 'pallets';
+    const mdReadme = fetchMarkdown(node.readme);
+    console.log(mdReadme);
     createPage({
       path: `${section}/${slug}/`,
       component: path.resolve(`./src/templates/single.js`),
@@ -71,6 +74,7 @@ const createPalletPages = async ({ graphql, actions }) => {
         slug,
         node,
         section,
+        mdReadme,
       },
     });
   });
