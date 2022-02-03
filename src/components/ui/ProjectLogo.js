@@ -10,6 +10,7 @@ export default function ProjectLogo({ name }) {
   });
   const thisLogo = getImage(findLogo.node.logo[0]);
   const imageStyles = 'w-12 h-12 lg:w-[60px] lg:h-[60px] mr-5 sm:mt-1';
+
   return (
     <>
       {thisLogo ? (
