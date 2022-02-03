@@ -6,7 +6,7 @@ import Sidebar from '../components/layout/single-template/Sidebar';
 import Layout from '../components/site/Layout';
 import NavBreadcrumb from '../components/site/NavBreadcrumb';
 import SEO from '../components/site/SEO';
-// import ProjectLogo from '../components/ui/ProjectLogo';
+import ProjectLogo from '../components/ui/ProjectLogo';
 
 export default function SingularPage({ pageContext }) {
   const { node, section } = pageContext;
@@ -22,9 +22,16 @@ export default function SingularPage({ pageContext }) {
           <div className="mb-12">
             <NavBreadcrumb />
           </div>
-          <div className="flex flex-col lg:flex-row">
-            {/* <ProjectLogo name={name} /> */}
-            <h1 className="font-body mb-12 lg:text-5xl">{name}</h1>
+          <div className="mb-12">
+            <div className="flex flex-col lg:flex-row lg:items-center">
+              {section === 'projects' && (
+                <ProjectLogo
+                  projectName={name}
+                  className="w-12 h-12 lg:w-[60px] lg:h-[60px] mr-5 p-0.5 object-contain rounded-full dark:bg-gray-300"
+                />
+              )}
+              <h1 className="font-body mb-0 lg:text-5xl">{name}</h1>
+            </div>
           </div>
           <p className="max-w-4xl">{description}</p>
         </div>
