@@ -7,7 +7,6 @@ import Layout from '../components/site/Layout';
 import SEO from '../components/site/SEO';
 
 export default function TestPage({ data }) {
-  console.log(data);
   return (
     <Layout mode="full">
       <SEO title="Home" />

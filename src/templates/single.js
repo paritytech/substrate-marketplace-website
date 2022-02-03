@@ -18,13 +18,13 @@ export default function SingularPage({ pageContext }) {
       <article
         className={cx(`container flex flex-col lg:flex-row xl:px-12`, `underline-animate underline-animate-thin`)}
       >
-        <div className="flex-grow mt-2 mb-10 lg:mb-20 pr-4">
+        <div className="flex-grow w-full mt-2 mb-10 lg:mb-20 pr-4">
           <div className="mb-12">
             <NavBreadcrumb />
           </div>
           <div className="flex flex-col lg:flex-row">
             {/* <ProjectLogo name={name} /> */}
-            <h1 className="font-body">{name}</h1>
+            <h1 className="font-body mb-12 lg:text-5xl">{name}</h1>
           </div>
           <p className="max-w-4xl">{description}</p>
         </div>

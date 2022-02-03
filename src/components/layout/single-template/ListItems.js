@@ -60,7 +60,7 @@ const Lists = ({ section, data }) => {
         {data.map((each, index) => {
           const slug = each.dependency.type.toLowerCase() + 's';
           return (
-            <li key={index} className="ml-2">
+            <li key={index} className={cx({ 'ml-2': data.length > 9 })}>
               <Link to={`/${slug}/${each.dependency.name}`}>{each.dependency.name}</Link>
             </li>
           );

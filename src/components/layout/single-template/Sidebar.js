@@ -17,10 +17,12 @@ export default function Sidebar({ data, section }) {
   } = data;
   return (
     <div className="w-full lg:w-60 lg:p-1">
-      <ListSection title="Developer Links">
-        {homepage && <ListItems section="dev" data={homepage} />}
-        {repository && <ListItems section="dev" type="repo" data={repository} />}
-      </ListSection>
+      {(homepage || repository) && (
+        <ListSection title="Developer Links">
+          {homepage && <ListItems section="dev" data={homepage} />}
+          {repository && <ListItems section="dev" type="repo" data={repository} />}
+        </ListSection>
+      )}
       {listingInsights.insights.length > 0 && (
         <ListSection title="Insights">
           <ListItems section="insights" data={listingInsights} />
