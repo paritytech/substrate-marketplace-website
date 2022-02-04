@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Icon from '../../default/Icon';
 import { Link } from '../../default/Link';
@@ -54,27 +54,44 @@ const Version = ({ data }) => (
     ))}
   </ul>
 );
-const Lists = ({ section, data }) => {
+
+const Dependencies = ({ section, data }) => {
+  const [displayText, setDisplayText] = useState(false);
+  const [count, setCount] = useState();
+  useEffect(() => {
+    if (data.length > 4) {
+      setDisplayText(true);
+      setCount(4);
+    }
+  }, []);
   return (
     <>
       {section === 'forwardDependencies' && <div className={cx('font-semibold ml-4 mb-2')}>Using:</div>}
-      {section === 'reverseDependencies' && <label className={cx('font-semibold ml-4 mb-2')}>Used by:</label>}
-      <ul
-        className={cx(
-          'overflow-auto overscroll-contain shadow-inner ml-4',
-          { 'h-64 border': data.length > 9 },
-          unorderedListClass
-        )}
-      >
-        {data.map((each, index) => {
+      {section === 'reverseDependencies' && <div className={cx('font-semibold ml-4 mb-2')}>Used by:</div>}
+      <ul className={cx('overflow-auto overscroll-contain shadow-inner ml-4', unorderedListClass)}>
+        {data.slice(0, count).map((each, index) => {
           const slug = each.dependency.type.toLowerCase() + 's';
           return (
-            <li key={index} className={cx({ 'ml-2': data.length > 9 })}>
+            <li key={index} className="mb-2">
               <Link to={`/${slug}/${each.dependency.name}`}>{each.dependency.name}</Link>
             </li>
           );
         })}
       </ul>
+      {displayText && (
+        <div className="ml-4">
+          and{' '}
+          <span
+            className="text-substrateBlue cursor-pointer hover:border-b hover:border-substrateBlue"
+            onClick={() => {
+              setDisplayText(false);
+              setCount(data.length);
+            }}
+          >
+            {data.length - 5} more
+          </span>
+        </div>
+      )}
     </>
   );
 };
@@ -95,9 +112,9 @@ export default function ListItems({ section, data, type }) {
       ) : section === 'runtimes' ? (
         <Runtimes data={data} />
       ) : section === 'forwardDependencies' ? (
-        <Lists section={section} data={data} />
+        <Dependencies section={section} data={data} />
       ) : section === 'reverseDependencies' ? (
-        <Lists section={section} data={data} />
+        <Dependencies section={section} data={data} />
       ) : section === 'version' ? (
         <Version section={section} data={data} />
       ) : (
