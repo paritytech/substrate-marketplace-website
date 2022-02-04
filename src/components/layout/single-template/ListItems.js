@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import Icon from '../../default/Icon';
 import { Link } from '../../default/Link';
@@ -55,14 +55,9 @@ const Version = ({ data }) => (
   </ul>
 );
 
-const Dependencies = ({ section, data }) => {
-  const [displayText, setDisplayText] = useState(false);
+const Dependencies = ({ section, data, moreThan4 }) => {
+  const [displayText, setDisplayText] = useState(moreThan4);
   const [count, setCount] = useState(4);
-  useEffect(() => {
-    if (data.length > 4) {
-      setDisplayText(true);
-    }
-  }, []);
   return (
     <>
       {section === 'forwardDependencies' && <div className={cx('font-semibold ml-4 mb-2')}>Using:</div>}
@@ -106,7 +101,7 @@ const List = ({ data }) => (
   </ul>
 );
 
-export default function ListItems({ section, data, type }) {
+export default function ListItems({ section, data, type, moreThan4 }) {
   return (
     <>
       {section === 'dev' ? (
@@ -116,9 +111,9 @@ export default function ListItems({ section, data, type }) {
       ) : section === 'runtimes' ? (
         <Runtimes data={data} />
       ) : section === 'forwardDependencies' ? (
-        <Dependencies section={section} data={data} />
+        <Dependencies section={section} data={data} moreThan4={moreThan4} />
       ) : section === 'reverseDependencies' ? (
-        <Dependencies section={section} data={data} />
+        <Dependencies section={section} data={data} moreThan4={moreThan4} />
       ) : section === 'version' ? (
         <Version section={section} data={data} />
       ) : (

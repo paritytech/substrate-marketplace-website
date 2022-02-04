@@ -49,9 +49,17 @@ export default function Sidebar({ data, section }) {
       {section != 'projects' && (
         <ListSection title="Dependencies">
           {forwardDependencies.dependencies.length > 0 ? (
-            <ListItems section="forwardDependencies" data={forwardDependencies.dependencies} />
+            <ListItems
+              section="forwardDependencies"
+              data={forwardDependencies.dependencies}
+              moreThan4={forwardDependencies.dependencies.length > 4}
+            />
           ) : reverseDependencies.dependencies.length > 0 ? (
-            <ListItems section="reverseDependencies" data={reverseDependencies.dependencies} />
+            <ListItems
+              section="reverseDependencies"
+              data={reverseDependencies.dependencies}
+              moreThan4={reverseDependencies.dependencies.length > 4}
+            />
           ) : (
             <div className="ml-4">None</div>
           )}
