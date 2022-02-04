@@ -57,11 +57,10 @@ const Version = ({ data }) => (
 
 const Dependencies = ({ section, data }) => {
   const [displayText, setDisplayText] = useState(false);
-  const [count, setCount] = useState();
+  const [count, setCount] = useState(4);
   useEffect(() => {
     if (data.length > 4) {
       setDisplayText(true);
-      setCount(4);
     }
   }, []);
   return (
