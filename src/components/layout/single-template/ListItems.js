@@ -45,6 +45,15 @@ const Runtimes = ({ data }) => (
   </ul>
 );
 
+const Version = ({ data }) => (
+  <ul className={unorderedListClass}>
+    {data.map((version, index) => (
+      <li key={index} className={listClass}>
+        {version === 'VERSION_2_0' ? 'Substrate 2.0' : version === 'VERSION_3_0' ? 'Substrate 3.0' : version}
+      </li>
+    ))}
+  </ul>
+);
 const Lists = ({ section, data }) => {
   return (
     <>
@@ -72,7 +81,7 @@ const Lists = ({ section, data }) => {
 
 const List = ({ data }) => (
   <ul className={unorderedListClass}>
-    <li className="ml-4 capitalize">{data}</li>
+    <li className="ml-2 capitalize">{data}</li>
   </ul>
 );
 
@@ -89,8 +98,10 @@ export default function ListItems({ section, data, type }) {
         <Lists section={section} data={data} />
       ) : section === 'reverseDependencies' ? (
         <Lists section={section} data={data} />
+      ) : section === 'version' ? (
+        <Version section={section} data={data} />
       ) : (
-        <List dat={data} />
+        <List data={data} />
       )}
     </>
   );

@@ -14,7 +14,11 @@ export default function Sidebar({ data, section }) {
     reverseDependencies,
     categories,
     license,
+    version,
+    compatibilityVersion,
+    authors,
   } = data;
+
   return (
     <div className="w-full lg:w-60 lg:p-1">
       {(homepage || repository) && (
@@ -23,6 +27,19 @@ export default function Sidebar({ data, section }) {
           {repository && <ListItems section="dev" type="repo" data={repository} />}
         </ListSection>
       )}
+
+      {(version || compatibilityVersion) && (
+        <ListSection title="Version">
+          {version && <ListItems section="version" data={[version, compatibilityVersion]} />}
+        </ListSection>
+      )}
+
+      {authors && (
+        <ListSection title="Authors">
+          <ListItems section="author" data={authors} />
+        </ListSection>
+      )}
+
       {listingInsights.insights.length > 0 && (
         <ListSection title="Insights">
           <ListItems section="insights" data={listingInsights} />
@@ -46,14 +63,19 @@ export default function Sidebar({ data, section }) {
           <ListItems section="runtimes" data={projectRelations.relations} />
         </ListSection>
       )}
+
       {categories && (
         <ListSection title="Categories">
-          <div className="ml-4">{categories}</div>
+          <ListItems section="categories" data={categories} />
         </ListSection>
       )}
-      <ListSection title="License">
-        <div className="ml-4">{license ? license : 'N/A'}</div>
-      </ListSection>
+
+      {license && (
+        <ListSection title="License">
+          <ListItems section="license" data={license} />
+        </ListSection>
+      )}
+
       <Disclaimer />
     </div>
   );
