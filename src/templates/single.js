@@ -15,10 +15,8 @@ export default function SingularPage({ pageContext }) {
   return (
     <Layout>
       <SEO title={name} />
-      <article
-        className={cx(`container flex flex-col lg:flex-row xl:px-12`, `underline-animate underline-animate-thin`)}
-      >
-        <div className="flex-grow w-full mt-2 mb-10 lg:mb-20 pr-4">
+      <article className={cx(`container flex flex-col lg:flex-row xl:px-12`)}>
+        <div className="flex-grow w-full mt-2 mb-10 lg:mb-20 pr-4 underline-animate underline-animate-thin">
           <div className="mb-12">
             <NavBreadcrumb />
           </div>

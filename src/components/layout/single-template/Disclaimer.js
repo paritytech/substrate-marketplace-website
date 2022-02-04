@@ -10,11 +10,10 @@ export default function Disclaimer() {
 
   return (
     <>
-      <div
-        className="mb-3 text-substrateBlue cursor-pointer underline-animate underline-animate-thin"
-        onClick={() => setIsComponentVisible(!isComponentVisible)}
-      >
-        Disclaimer
+      <div className="mb-3" onClick={() => setIsComponentVisible(!isComponentVisible)}>
+        <span className="text-substrateBlue cursor-pointer duration-75 ease-in-out hover:border-b hover:border-substrateBlue">
+          Disclaimer
+        </span>
       </div>
       {isComponentVisible && (
         <Modal id={ref} closeModal={setIsComponentVisible}>

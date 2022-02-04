@@ -8,7 +8,7 @@ const listClass = 'ml-2';
 const unorderedListClass = 'list-none';
 
 const DevLinks = ({ data, type = 'home' }) => (
-  <div className="flex items-center mb-2">
+  <div className="flex items-center mb-2 underline-animate underline-animate-thin">
     <Icon className="ml-4 mr-2" name={type === 'repo' ? 'repo' : 'link'} />
     <Link to={data} className="text-substrateBlue">
       {type === 'repo' ? 'Repository' : 'Homepage'}
@@ -72,8 +72,13 @@ const Dependencies = ({ section, data }) => {
         {data.slice(0, count).map((each, index) => {
           const slug = each.dependency.type.toLowerCase() + 's';
           return (
-            <li key={index} className="mb-2">
-              <Link to={`/${slug}/${each.dependency.name}`}>{each.dependency.name}</Link>
+            <li key={index} className="mb-2 text-substrateBlue">
+              <Link
+                className="duration-75 ease-in-out hover:border-b hover:border-substrateBlue"
+                to={`/${slug}/${each.dependency.name}`}
+              >
+                {each.dependency.name}
+              </Link>
             </li>
           );
         })}
