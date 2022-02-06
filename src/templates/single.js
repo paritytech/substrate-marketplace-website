@@ -28,7 +28,7 @@ export default function SingularPage({ pageContext }) {
                   className="w-12 h-12 lg:w-[60px] lg:h-[60px] mr-5 p-0.5 object-contain rounded-full dark:bg-gray-300"
                 />
               )}
-              <h1 className="font-body mb-0 lg:text-5xl">{name}</h1>
+              <h1 className="font-bold mb-0 lg:text-5xl">{name}</h1>
             </div>
           </div>
           <p className="max-w-4xl">{description}</p>
