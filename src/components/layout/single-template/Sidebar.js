@@ -20,7 +20,7 @@ export default function Sidebar({ data, section }) {
   } = data;
 
   return (
-    <div className="w-full lg:w-60 lg:p-1">
+    <div className="w-full mb-10 lg:mb-20 lg:w-60 lg:p-1">
       {(homepage || repository) && (
         <ListSection title="Developer Links">
           {homepage && <ListItems section="dev" data={homepage} />}

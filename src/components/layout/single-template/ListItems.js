@@ -6,11 +6,12 @@ import { Link } from '../../default/Link';
 
 const listClass = 'ml-2';
 const unorderedListClass = 'list-none';
+const hoverStyles = 'duration-150 ease-in-out border-b border-transparent hover:border-b hover:border-substrateBlue';
 
 const DevLinks = ({ data, type = 'home' }) => (
-  <div className="flex items-center mb-2 underline-animate underline-animate-thin">
-    <Icon className="ml-4 mr-2" name={type === 'repo' ? 'repo' : 'link'} />
-    <Link to={data} className="text-substrateBlue">
+  <div className="flex items-center mb-2">
+    <Icon className="ml-4 mr-2 -mt-0.5" name={type === 'repo' ? 'repo' : 'link'} />
+    <Link to={data} className={`text-substrateBlue ${hoverStyles}`}>
       {type === 'repo' ? 'Repository' : 'Homepage'}
     </Link>
   </div>
@@ -62,15 +63,12 @@ const Dependencies = ({ section, data, moreThan4 }) => {
     <>
       {section === 'forwardDependencies' && <div className={cx('font-semibold ml-4 mb-2')}>Using:</div>}
       {section === 'reverseDependencies' && <div className={cx('font-semibold ml-4 mb-2')}>Used by:</div>}
-      <ul className={cx('overflow-auto overscroll-contain shadow-inner ml-4', unorderedListClass)}>
+      <ul className={cx('overflow-auto overscroll-contain ml-4', unorderedListClass)}>
         {data.slice(0, count).map((each, index) => {
           const slug = each.dependency.type.toLowerCase() + 's';
           return (
-            <li key={index} className="mb-2 text-substrateBlue">
-              <Link
-                className="duration-75 ease-in-out hover:border-b hover:border-substrateBlue"
-                to={`/${slug}/${each.dependency.name}`}
-              >
+            <li key={index} className="inline-block mb-2 text-substrateBlue">
+              <Link className={`pb-0.5 ${hoverStyles}`} to={`/${slug}/${each.dependency.name}`}>
                 {each.dependency.name}
               </Link>
             </li>
@@ -81,7 +79,7 @@ const Dependencies = ({ section, data, moreThan4 }) => {
         <div className="ml-4">
           and{' '}
           <span
-            className="text-substrateBlue cursor-pointer hover:border-b hover:border-substrateBlue"
+            className={`text-substrateBlue cursor-pointer ${hoverStyles}`}
             onClick={() => {
               setDisplayText(false);
               setCount(data.length);
