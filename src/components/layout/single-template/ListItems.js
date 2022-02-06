@@ -7,11 +7,12 @@ import { Link } from '../../default/Link';
 const listClass = 'ml-2';
 const unorderedListClass = 'list-none';
 const hoverStyles = 'duration-150 ease-in-out border-b border-transparent hover:border-b hover:border-substrateBlue';
+const blueText = 'text-substrateBlue dark:text-substrateBlue-light';
 
 const DevLinks = ({ data, type = 'home' }) => (
   <div className="flex items-center mb-2">
-    <Icon className="ml-4 mr-2 -mt-0.5" name={type === 'repo' ? 'repo' : 'link'} />
-    <Link to={data} className={`text-substrateBlue ${hoverStyles}`}>
+    <Icon className={`ml-4 mr-2 -mt-0.5 fill-current ${blueText}`} name={type === 'repo' ? 'repo' : 'link'} />
+    <Link to={data} className={`${blueText} ${hoverStyles}`}>
       {type === 'repo' ? 'Repository' : 'Homepage'}
     </Link>
   </div>
@@ -67,7 +68,7 @@ const Dependencies = ({ section, data, moreThan4 }) => {
         {data.slice(0, count).map((each, index) => {
           const slug = each.dependency.type.toLowerCase() + 's';
           return (
-            <li key={index} className="inline-block mb-2 text-substrateBlue">
+            <li key={index} className={`inline-block mb-2 ${blueText}`}>
               <Link className={`pb-0.5 ${hoverStyles}`} to={`/${slug}/${each.dependency.name}`}>
                 {each.dependency.name}
               </Link>
@@ -79,7 +80,7 @@ const Dependencies = ({ section, data, moreThan4 }) => {
         <div className="ml-4">
           and{' '}
           <span
-            className={`text-substrateBlue cursor-pointer ${hoverStyles}`}
+            className={`cursor-pointer ${blueText} ${hoverStyles}`}
             onClick={() => {
               setDisplayText(false);
               setCount(data.length);
