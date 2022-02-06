@@ -87,7 +87,7 @@ const Dependencies = ({ section, data, moreThan4 }) => {
               setCount(data.length);
             }}
           >
-            {data.length - 5} more
+            {data.length - 4} more
           </span>
         </div>
       )}
