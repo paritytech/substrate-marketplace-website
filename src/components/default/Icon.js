@@ -39,6 +39,7 @@ import paperplane from '../../images/svg/paperplane.svg';
 import pen from '../../images/svg/pen.svg';
 import placeholder from '../../images/svg/placeholder.svg';
 import polkadotLogo from '../../images/svg/polkadot-logo.svg';
+import search from '../../images/svg/search.svg';
 import seminar from '../../images/svg/seminar.svg';
 import shieldCheckSolid from '../../images/svg/shield-check-solid.svg';
 import smile from '../../images/svg/smile.svg';
@@ -96,7 +97,6 @@ import star from '../../images/svg/ui/star.svg';
 import sun from '../../images/svg/ui/sun.svg';
 import w3fLogo from '../../images/svg/w3f-logo.svg';
 import waLogo from '../../images/svg/wa-logo.svg';
-
 const iconsMap = {
   /* home */
   developers: developers,
@@ -146,6 +146,7 @@ const iconsMap = {
   'sidebar-toggle': sidebarToggle,
   docs: docs,
   moon: moon,
+  search: search,
   sun: sun,
   'external-link': externalLink,
   calendar: calendar,
