@@ -91,6 +91,7 @@ import link from '../../images/svg/ui/link.svg';
 import moon from '../../images/svg/ui/moon.svg';
 import play from '../../images/svg/ui/play.svg';
 import repo from '../../images/svg/ui/repo.svg';
+import searchIcon from '../../images/svg/ui/search.svg';
 import sidebarToggle from '../../images/svg/ui/sidebar-toggle.svg';
 import star from '../../images/svg/ui/star.svg';
 import sun from '../../images/svg/ui/sun.svg';
@@ -158,6 +159,7 @@ const iconsMap = {
   tools: tools,
   repo: repo,
   link: link,
+  searchIcon: searchIcon,
   /* mockup */
   placeholder: placeholder,
   /* social */

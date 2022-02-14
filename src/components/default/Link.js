@@ -44,6 +44,14 @@ const addTrailingSlash = uri => {
   return uri + search + hash;
 };
 
+const addLeadingSlash = uri => {
+  return (uri = uri.startsWith('/') ? uri : '/'.concat(uri));
+};
+
+const addSlashes = uri => {
+  return addLeadingSlash(addTrailingSlash(uri));
+};
+
 const InfraLink = ({ to, title, children, ...other }) => {
   const { colorMode } = useContext(ThemeContext);
 
@@ -77,7 +85,7 @@ const Link = ({ to, title, children, ...other }) => {
     );
   } else {
     return (
-      <LinkI18n to={addTrailingSlash(to)} title={title} {...other}>
+      <LinkI18n to={addSlashes(to)} title={title} {...other}>
         {children}
       </LinkI18n>
     );
@@ -101,7 +109,7 @@ const LinkMenu = ({ prefix, slug, title, children, ...other }) => {
     );
   } else {
     return (
-      <LinkI18n to={addTrailingSlash(prefix + slug)} {...other}>
+      <LinkI18n to={addSlashes(prefix + slug)} {...other}>
         {children}
       </LinkI18n>
     );
@@ -113,8 +121,12 @@ const buildSubMenu = (menus, item) => {
 };
 
 const testInfraLink = href => {
-  const regex = new RegExp(process.env.GATSBY_DOCS_URL, 'i');
-  const match = regex.test(href);
+  const regexList = [
+    new RegExp(process.env.GATSBY_WEBSITE_URL, 'i'),
+    new RegExp(process.env.GATSBY_DOCS_URL, 'i'),
+    new RegExp(process.env.GATSBY_MARKETPLACE_URL, 'i'),
+  ];
+  const match = regexList.some(rx => rx.test(href));
   return match;
 };
 
