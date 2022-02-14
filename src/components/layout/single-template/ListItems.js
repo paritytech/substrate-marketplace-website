@@ -68,7 +68,7 @@ const Dependencies = ({ section, data, moreThan4 }) => {
         {data.slice(0, count).map((each, index) => {
           const slug = each.dependency.type.toLowerCase() + 's';
           return (
-            <li key={index} className={`inline-block mb-2 ${blueText}`}>
+            <li key={index} className={`mb-2 ${blueText}`}>
               <Link className={`pb-0.5 ${hoverStyles}`} to={`/${slug}/${each.dependency.name}`}>
                 {each.dependency.name}
               </Link>
