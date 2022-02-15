@@ -210,7 +210,3 @@ div[aria-label='animation'] {
 .banner a {
   @apply text-substrateDarkThemeBlue dark:text-substrateBlue;
 }
-
-input:checked ~ .dot {
-  transform: translateX(100%);
-}

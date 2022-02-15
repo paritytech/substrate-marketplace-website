@@ -6,7 +6,7 @@ import { Link } from '../../default/Link';
 export default function Cards({ data, selectedVersion, searchQuery, selectedCategory }) {
   const cardsData = data.data.marketplace.search.results;
   const [filteredData, setFilteredData] = useState({});
-  console.log(selectedCategory);
+
   useEffect(() => {
     const filtered = cardsData.filter(each => each.compatibilityVersion === selectedVersion);
     setFilteredData(filtered);
@@ -31,7 +31,6 @@ export default function Cards({ data, selectedVersion, searchQuery, selectedCate
             }
           })
           .map((each, index) => {
-            console.log(each);
             return (
               <Link
                 key={index}

@@ -11,7 +11,7 @@ import NavBreadcrumb from '../components/site/NavBreadcrumb';
 import SEO from '../components/site/SEO';
 
 export default function SingularPage({ pageContext }) {
-  const { categories, allVersions, section, result } = pageContext;
+  const { categories, section, result } = pageContext;
   const [selectedVersion, setSelectedVersion] = useState('VERSION_3_0');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -37,7 +37,7 @@ export default function SingularPage({ pageContext }) {
         <div className="lg:flex">
           <Filters
             categories={categories}
-            allVersions={allVersions}
+            selectedVersion={selectedVersion}
             setSelectedVersion={setSelectedVersion}
             selectedCategory={selectedCategory}
             setSelectedCategory={setSelectedCategory}
