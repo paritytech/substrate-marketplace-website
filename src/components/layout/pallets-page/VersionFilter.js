@@ -22,7 +22,7 @@ export default function VersionFilter({ versions, selectedVersion, setSelectedVe
           />
         </div>
         {isComponentVisible && (
-          <div className="absolute top-7 -left-2 border border-substrateGray-dark bg-white pt-6 px-6 rounded-xl shadow-md animate-fade-in-down">
+          <div className="absolute top-7 -left-2 border border-substrateGray-dark dark:border-substrateWhite bg-white dark:bg-substrateDark pt-6 px-6 rounded-xl shadow-md animate-fade-in-down">
             {versions.map((version, index) => {
               const currentVersion = () => {
                 if (version === 'Substrate 2.0') {

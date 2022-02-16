@@ -10,12 +10,12 @@ export default function LocalSearch({ setSearchQuery, searchQuery, section }) {
   return (
     <>
       <input
-        className="w-full p-2 text-sm font-medium placeholder-gray-400 outline-none"
+        className="w-full p-2 text-sm font-medium placeholder-gray-400 outline-none dark:bg-substrateDarkest"
         placeholder={`Search ${section}`}
         value={searchQuery}
         onChange={event => handleChange(event)}
       />
-      <Icon name="search" className="fill-current text-substrateGray-dark" />
+      <Icon name="search" className="fill-current text-substrateGray-dark dark:text-substrateWhite" />
     </>
   );
 }

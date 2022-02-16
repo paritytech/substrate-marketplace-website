@@ -37,14 +37,14 @@ export default function Cards({ data, selectedVersion, searchQuery, selectedCate
                 to={`/pallets/${slugify(each.name)}`}
                 className="w-full duration-300 ease-in-out hover:scale-105"
               >
-                <div className="relative h-44 px-3 py-2 bg-substrateGray-light rounded-md shadow-md">
-                  <div className="absolute top-0 right-0 py-2 px-3 bg-substrateGreen-light rounded-tr-md rounded-bl-md font-bold text-xs">
+                <div className="relative h-44 px-4 py-3 bg-substrateGray-light dark:bg-substrateDark rounded-md shadow-md">
+                  <div className="absolute top-0 right-0 py-2 px-3 bg-substrateGreen-light dark:bg-substrateGreen rounded-tr-md rounded-bl-md font-bold text-xs">
                     {each.version}
                   </div>
                   <div>
-                    <h5 className="mb-1">{each.name}</h5>
-                    <p className="text-sm mb-4">Acala</p>
-                    <p className="text-sm">{each.description}</p>
+                    <h5 className="mb-2 truncate md:w-60 xl:w-auto 2xl:w-60">{each.name}</h5>
+                    <p className="text-sm mb-4">{each.authors ? each.authors : 'N/A'}</p>
+                    <p className="text-sm mb-0 h-20 text-ellipsis overflow-hidden">{each.description}</p>
                   </div>
                 </div>
               </Link>
