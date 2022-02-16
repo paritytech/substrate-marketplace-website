@@ -34,7 +34,7 @@ export default function Cards({ data, selectedVersion, searchQuery, selectedCate
             return (
               <Link
                 key={index}
-                to={`/pallets/${slugify(each.name)}`}
+                to={`/pallets/${slugify(each.name)}/`}
                 className="w-full duration-300 ease-in-out hover:scale-105"
               >
                 <div className="relative h-44 px-4 py-3 bg-substrateGray-light dark:bg-substrateDark rounded-md shadow-md">
