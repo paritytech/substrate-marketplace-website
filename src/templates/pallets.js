@@ -1,6 +1,6 @@
 // import cx from 'classnames';
 import { graphql } from 'gatsby';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Cards from '../components/layout/pallets-page/Cards';
 import Filters from '../components/layout/pallets-page/Filters';
@@ -16,6 +16,18 @@ export default function SingularPage({ pageContext }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
 
+  useEffect(() => {
+    if (location.hash) {
+      setSelectedCategory(location.hash.substring(1));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (selectedCategory != 'all') {
+      location.hash = `#${selectedCategory}`;
+    }
+  }, [selectedCategory]);
+
   return (
     <Layout>
       <SEO title="Pallets" />
@@ -30,7 +42,7 @@ export default function SingularPage({ pageContext }) {
           <hr className="hidden lg:block" />
         </div>
         <div className="flex items-center border-b mb-9 lg:ml-52">
-          <LocalSearch searchQuer={searchQuery} setSearchQuery={setSearchQuery} />
+          <LocalSearch section={section} searchQuer={searchQuery} setSearchQuery={setSearchQuery} />
         </div>
       </Section>
       <Section>
