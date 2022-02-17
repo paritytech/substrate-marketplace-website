@@ -32,7 +32,7 @@ export default function CardsContainer({ data, section, selectedVersion, searchQ
       .filter(each => {
         if (selectedCategory === 'all') {
           return each;
-        } else if (each.categories && each.categories.includes(selectedCategory)) {
+        } else if (each.categories && each.categories.toLowerCase().includes(selectedCategory)) {
           return each;
         }
       })
