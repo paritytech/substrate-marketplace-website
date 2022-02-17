@@ -69,7 +69,7 @@ export default function CardsContainer({ data, section, selectedVersion, searchQ
           {displayedDataAvailable && (
             <div className="border dark:border-substrateGray-dark rounded-md flex flex-col items-center py-8">
               <Icon name="noResults" className="fill-current mb-8" />
-              <p>No {section} found.</p>
+              <p className="text-center px-4">No {section} found. Try a different version or search query.</p>
             </div>
           )}
         </>
