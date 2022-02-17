@@ -9,6 +9,7 @@ import Section from '../components/layout/Section';
 import Layout from '../components/site/Layout';
 import NavBreadcrumb from '../components/site/NavBreadcrumb';
 import SEO from '../components/site/SEO';
+import { slugify } from '../utils/url';
 
 export default function SingularPage({ pageContext }) {
   const { categories, section, result } = pageContext;
@@ -18,12 +19,15 @@ export default function SingularPage({ pageContext }) {
 
   useEffect(() => {
     if (location.hash) {
-      setSelectedCategory(location.hash.substring(1));
+      setSelectedCategory(location.hash.replace(/-/g, ' ').substring(1));
     }
   }, []);
 
   useEffect(() => {
-    location.hash = `#${selectedCategory}`;
+    if (selectedCategory != 'all') {
+      const hash = slugify(selectedCategory);
+      location.hash = `#${hash}`;
+    }
   }, [selectedCategory]);
 
   return (

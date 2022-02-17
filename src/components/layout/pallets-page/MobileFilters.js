@@ -22,7 +22,12 @@ export default function MobileFilters({
         <select
           className="dark:bg-substrateDark"
           value={selectedCategory}
-          onChange={event => setSelectedCategory(event.target.value)}
+          onChange={event => {
+            if (event.target.value === 'all') {
+              history.pushState('', document.title, location.pathname);
+            }
+            setSelectedCategory(event.target.value);
+          }}
         >
           <option value="all">All</option>
           {sortCategories(categories).map((cat, index) => (
@@ -32,7 +37,7 @@ export default function MobileFilters({
           ))}
         </select>
       </div>
-      <div className="flex flex-col mb-6">
+      <div className="flex flex-col mb-16">
         <label className="text-lg mb-3">Filter by Substrate Version</label>
         <select
           className="dark:bg-substrateDark"

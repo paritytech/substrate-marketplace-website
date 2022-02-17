@@ -5,7 +5,12 @@ import { sortCategories } from '../../../utils/sortCategories';
 
 export default function CategorieFilter({ setSelectedCategory, selectedCategory, categories }) {
   const listStyles = 'mb-8 capitalize cursor-pointer hover:text-substrateGreen';
-  const handleCLick = event => setSelectedCategory(event.target.innerText.toLowerCase());
+  const handleCLick = event => {
+    if (event.target.innerText.toLowerCase() === 'all') {
+      history.pushState('', document.title, location.pathname);
+    }
+    setSelectedCategory(event.target.innerText.toLowerCase());
+  };
 
   return (
     <ul className="list-none">
