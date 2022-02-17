@@ -35,6 +35,7 @@ import logoAstar from '../../images/svg/logo-astar.svg';
 import logoMoonbeam from '../../images/svg/logo-moonbeam.svg';
 import logoWhite from '../../images/svg/logo-white.svg';
 import mail from '../../images/svg/mail.svg';
+import noResults from '../../images/svg/no-results.svg';
 import paperplane from '../../images/svg/paperplane.svg';
 import pen from '../../images/svg/pen.svg';
 import placeholder from '../../images/svg/placeholder.svg';
@@ -159,6 +160,8 @@ const iconsMap = {
   tools: tools,
   repo: repo,
   link: link,
+  /* marketplace */
+  noResults: noResults,
   /* mockup */
   placeholder: placeholder,
   /* social */

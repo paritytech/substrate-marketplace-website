@@ -2,7 +2,7 @@
 import { graphql } from 'gatsby';
 import React, { useEffect, useState } from 'react';
 
-import Cards from '../components/layout/pallets-page/Cards';
+import CardsContainer from '../components/layout/pallets-page/CardsContainer';
 import Filters from '../components/layout/pallets-page/Filters';
 import LocalSearch from '../components/layout/pallets-page/LocalSearch';
 import Section from '../components/layout/Section';
@@ -23,9 +23,7 @@ export default function SingularPage({ pageContext }) {
   }, []);
 
   useEffect(() => {
-    if (selectedCategory != 'all') {
-      location.hash = `#${selectedCategory}`;
-    }
+    location.hash = `#${selectedCategory}`;
   }, [selectedCategory]);
 
   return (
@@ -55,14 +53,13 @@ export default function SingularPage({ pageContext }) {
             setSelectedCategory={setSelectedCategory}
           />
           <div className="lg:flex-grow min-h-screen">
-            <div className="w-1/1 grid gap-y-8 md:grid-cols-2 md:gap-x-6 2xl:grid-cols-3">
-              <Cards
-                data={result}
-                selectedVersion={selectedVersion}
-                searchQuery={searchQuery}
-                selectedCategory={selectedCategory}
-              />
-            </div>
+            <CardsContainer
+              data={result}
+              section={section}
+              selectedVersion={selectedVersion}
+              searchQuery={searchQuery}
+              selectedCategory={selectedCategory}
+            />
           </div>
         </div>
       </Section>
