@@ -1,25 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-import { slugify } from '../../../utils/url';
 import Icon from '../../default/Icon';
-import { Link } from '../../default/Link';
-
-const Card = ({ name, version, authors, description }) => {
-  return (
-    <Link to={`/pallets/${slugify(name)}/`} className="w-full duration-300 ease-in-out hover:scale-105">
-      <div className="relative h-44 px-4 py-3 bg-substrateGray-light dark:bg-substrateDark rounded-md shadow-md">
-        <div className="absolute top-0 right-0 py-2 px-3 bg-substrateGreen-light dark:bg-substrateGreen rounded-tr-md rounded-bl-md font-bold text-xs">
-          {version}
-        </div>
-        <div>
-          <h5 className="mb-2 truncate md:w-60 xl:w-auto 2xl:w-60">{name}</h5>
-          <p className="text-sm mb-4">{authors ? authors : 'N/A'}</p>
-          <p className="text-sm mb-0 h-20 text-ellipsis overflow-hidden">{description}</p>
-        </div>
-      </div>
-    </Link>
-  );
-};
+import { Card, ProjectCard } from './Cards';
 
 export default function CardsContainer({ data, section, selectedVersion, searchQuery, selectedCategory }) {
   const cardsData = data.data.marketplace.search.results;
@@ -28,7 +10,13 @@ export default function CardsContainer({ data, section, selectedVersion, searchQ
 
   useEffect(() => {
     const filteredData = cardsData
-      .filter(each => each.compatibilityVersion === selectedVersion)
+      .filter(each => {
+        if (section === 'projects') {
+          return each;
+        } else {
+          return each.compatibilityVersion === selectedVersion;
+        }
+      })
       .filter(each => {
         if (selectedCategory === 'all') {
           return each;
@@ -55,13 +43,24 @@ export default function CardsContainer({ data, section, selectedVersion, searchQ
       {displayedData.length > 0 ? (
         <div className="w-1/1 grid gap-y-8 md:grid-cols-2 md:gap-x-6 2xl:grid-cols-3">
           {displayedData.map((each, index) => (
-            <Card
-              key={index}
-              name={each.name}
-              version={each.version}
-              authors={each.authors}
-              description={each.description}
-            />
+            <div key={index}>
+              {section === 'projects' ? (
+                <ProjectCard
+                  name={each.name}
+                  categories={each.categories}
+                  stars={each.listingInsights.stars}
+                  description={each.description}
+                />
+              ) : (
+                <Card
+                  section={section}
+                  name={each.name}
+                  version={each.version}
+                  authors={each.authors}
+                  description={each.description}
+                />
+              )}
+            </div>
           ))}
         </div>
       ) : (

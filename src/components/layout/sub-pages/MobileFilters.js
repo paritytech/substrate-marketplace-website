@@ -1,5 +1,7 @@
+import cx from 'classnames';
 import React from 'react';
 
+import { capitalize } from '../../../utils/capitalize';
 import { sortCategories } from '../../../utils/sortCategories';
 
 export default function MobileFilters({
@@ -8,16 +10,12 @@ export default function MobileFilters({
   selectedVersion,
   setSelectedVersion,
   versions,
+  section,
   categories,
 }) {
-  const capitalize = str =>
-    str.toLowerCase().replace(/\b[a-z](?=[a-z]{2})/g, function (letter) {
-      return letter.toUpperCase();
-    });
-
   return (
     <>
-      <div className="flex flex-col mb-6">
+      <div className={cx('flex flex-col', { 'mb-6': section != 'projects' }, { 'mb-16': section === 'projects' })}>
         <label className="text-lg mb-3">Filter by Type</label>
         <select
           className="dark:bg-substrateDark"
@@ -37,22 +35,24 @@ export default function MobileFilters({
           ))}
         </select>
       </div>
-      <div className="flex flex-col mb-16">
-        <label className="text-lg mb-3">Filter by Substrate Version</label>
-        <select
-          className="dark:bg-substrateDark"
-          value={selectedVersion}
-          onChange={event => setSelectedVersion(event.target.value)}
-        >
-          {versions.map((version, index) => {
-            return (
-              <option key={index} value={version === 'Substrate 3.0' ? 'VERSION_3_0' : 'VERSION_2_0'}>
-                {version}
-              </option>
-            );
-          })}
-        </select>
-      </div>
+      {section != 'projects' && (
+        <div className="flex flex-col mb-16">
+          <label className="text-lg mb-3">Filter by Substrate Version</label>
+          <select
+            className="dark:bg-substrateDark"
+            value={selectedVersion}
+            onChange={event => setSelectedVersion(event.target.value)}
+          >
+            {versions.map((version, index) => {
+              return (
+                <option key={index} value={version === 'Substrate 3.0' ? 'VERSION_3_0' : 'VERSION_2_0'}>
+                  {version}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+      )}
     </>
   );
 }

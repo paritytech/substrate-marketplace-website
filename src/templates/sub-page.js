@@ -2,13 +2,14 @@
 import { graphql } from 'gatsby';
 import React, { useEffect, useState } from 'react';
 
-import CardsContainer from '../components/layout/pallets-page/CardsContainer';
-import Filters from '../components/layout/pallets-page/Filters';
-import LocalSearch from '../components/layout/pallets-page/LocalSearch';
 import Section from '../components/layout/Section';
+import CardsContainer from '../components/layout/sub-pages/CardsContainer';
+import Filters from '../components/layout/sub-pages/Filters';
+import LocalSearch from '../components/layout/sub-pages/LocalSearch';
 import Layout from '../components/site/Layout';
 import NavBreadcrumb from '../components/site/NavBreadcrumb';
 import SEO from '../components/site/SEO';
+import { capitalize } from '../utils/capitalize';
 import { slugify } from '../utils/url';
 
 export default function SingularPage({ pageContext }) {
@@ -32,7 +33,7 @@ export default function SingularPage({ pageContext }) {
 
   return (
     <Layout>
-      <SEO title="Pallets" />
+      <SEO title={`${capitalize(section)}`} />
       <Section className="mb-9">
         <div className="mb-12">
           <NavBreadcrumb />
@@ -51,6 +52,7 @@ export default function SingularPage({ pageContext }) {
         <div className="lg:flex">
           <Filters
             categories={categories}
+            section={section}
             selectedVersion={selectedVersion}
             setSelectedVersion={setSelectedVersion}
             selectedCategory={selectedCategory}

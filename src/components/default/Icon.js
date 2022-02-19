@@ -95,6 +95,7 @@ import play from '../../images/svg/ui/play.svg';
 import repo from '../../images/svg/ui/repo.svg';
 import sidebarToggle from '../../images/svg/ui/sidebar-toggle.svg';
 import star from '../../images/svg/ui/star.svg';
+import starWithCircle from '../../images/svg/ui/star.svg';
 import sun from '../../images/svg/ui/sun.svg';
 import w3fLogo from '../../images/svg/w3f-logo.svg';
 import waLogo from '../../images/svg/wa-logo.svg';
@@ -152,6 +153,7 @@ const iconsMap = {
   'external-link': externalLink,
   calendar: calendar,
   star: star,
+  starWithCircle: starWithCircle,
   'diamond-yellow': diamondYellow,
   'diamond-pink': diamondPink,
   'diamond-purple': diamondPurple,

@@ -6,6 +6,7 @@ import VersionFilter from './VersionFilter';
 
 export default function Filters({
   categories,
+  section,
   selectedVersion,
   setSelectedVersion,
   selectedCategory,
@@ -19,6 +20,7 @@ export default function Filters({
         <MobileFilters
           versions={versions}
           categories={categories}
+          section={section}
           selectedVersion={selectedVersion}
           setSelectedVersion={setSelectedVersion}
           selectedCategory={selectedCategory}
@@ -26,7 +28,13 @@ export default function Filters({
         />
       </div>
       <div className="hidden lg:block lg:flex-none w-52">
-        <VersionFilter versions={versions} selectedVersion={selectedVersion} setSelectedVersion={setSelectedVersion} />
+        {section != 'projects' && (
+          <VersionFilter
+            versions={versions}
+            selectedVersion={selectedVersion}
+            setSelectedVersion={setSelectedVersion}
+          />
+        )}
         <CategorieFilter
           setSelectedCategory={setSelectedCategory}
           selectedCategory={selectedCategory}
