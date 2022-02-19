@@ -1,3 +1,4 @@
+import cx from 'classnames';
 import React from 'react';
 
 import { slugify } from '../../../utils/url';
@@ -7,8 +8,8 @@ import ProjectLogo from '../../ui/ProjectLogo';
 
 const Card = ({ name, section, version, authors, description }) => {
   return (
-    <Link to={`/${section}/${slugify(name)}/`} className="w-full duration-300 ease-in-out hover:scale-105">
-      <div className="relative h-44 px-4 py-3 bg-substrateGray-light dark:bg-substrateDark rounded-md shadow-md">
+    <Link to={`/${section}/${slugify(name)}/`}>
+      <div className="relative h-44 px-4 py-3 bg-substrateGray-light dark:bg-substrateDark rounded-md shadow-xl  duration-75 ease-in-out hover:scale-105">
         <div className="absolute top-0 right-0 py-2 px-3 bg-substrateGreen-light dark:bg-substrateGreen rounded-tr-md rounded-bl-md font-bold text-xs">
           {version}
         </div>
@@ -22,12 +23,18 @@ const Card = ({ name, section, version, authors, description }) => {
 
 function ProjectCard({ stars, categories, description, name }) {
   return (
-    <Link to={`/projects/${slugify(name)}/`} className="w-full duration-300 ease-in-out hover:scale-105">
-      <div className="relative p-6 bg-substrateGray-light dark:bg-substrateDark rounded-md shadow-md">
+    <Link to={`/projects/${slugify(name)}/`}>
+      <div
+        className={cx(
+          'relative p-6 -mt-px -ml-px bg-white dark:bg-darkBackground duration-75 ease-in-out',
+          'border border-substrateDark dark:border-substrateGray-light border-opacity-10 dark:border-opacity-10',
+          'hover:border hover:shadow-xl hover:z-20 hover:scale-105'
+        )}
+      >
         {stars > 0 && (
           <div className="absolute top-6 right-6 font-medium">
             <div className="flex items-center">
-              <Icon name="star" className="mr-2" />
+              <Icon name="star" className="mr-2 fill-current text-substrateDark dark:text-white" />
               <span>{stars}</span>
             </div>
           </div>

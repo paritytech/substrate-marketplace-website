@@ -1,3 +1,4 @@
+import cx from 'classnames';
 import React, { useEffect, useState } from 'react';
 
 import Icon from '../../default/Icon';
@@ -41,7 +42,9 @@ export default function CardsContainer({ data, section, selectedVersion, searchQ
   return (
     <>
       {displayedData.length > 0 ? (
-        <div className="w-1/1 grid gap-y-8 md:grid-cols-2 md:gap-x-6 2xl:grid-cols-3">
+        <div
+          className={cx('w-1/1 grid md:grid-cols-2 2xl:grid-cols-3', { ' gap-y-8 md:gap-x-6': section != 'projects' })}
+        >
           {displayedData.map((each, index) => (
             <div key={index}>
               {section === 'projects' ? (
