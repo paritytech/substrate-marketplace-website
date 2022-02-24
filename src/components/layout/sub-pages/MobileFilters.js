@@ -1,8 +1,6 @@
 import cx from 'classnames';
 import React from 'react';
 
-import { sortCategories } from '../../../utils/sortCategories';
-
 export default function MobileFilters({
   selectedCategory,
   setSelectedCategory,
@@ -27,9 +25,9 @@ export default function MobileFilters({
           }}
         >
           <option value="all">All</option>
-          {sortCategories(categories).map((cat, index) => (
-            <option key={index} value={cat.name} className="capitalize">
-              {cat.name}
+          {categories.sort().map((cat, index) => (
+            <option key={index} value={cat} className="capitalize">
+              {cat}
             </option>
           ))}
         </select>

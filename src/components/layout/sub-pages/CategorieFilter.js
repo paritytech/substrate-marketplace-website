@@ -1,20 +1,20 @@
 import cx from 'classnames';
 import React from 'react';
 
-import { sortCategories } from '../../../utils/sortCategories';
-
 export default function CategorieFilter({ setSelectedCategory, selectedCategory, categories }) {
   const listStyles = 'mb-8 capitalize cursor-pointer hover:text-substrateGreen';
   const handleCLick = event => {
-    if (event.target.innerText.toLowerCase() === 'all') {
+    const dataName = event.target.getAttribute('data-name');
+    if (dataName === 'all') {
       history.pushState('', document.title, location.pathname);
     }
-    setSelectedCategory(event.target.innerText.toLowerCase());
+    setSelectedCategory(dataName);
   };
 
   return (
     <ul className="list-none">
       <li
+        data-name="all"
         onClick={e => handleCLick(e)}
         className={cx(listStyles, {
           'font-bold text-substrateGreen': selectedCategory === 'all',
@@ -22,19 +22,22 @@ export default function CategorieFilter({ setSelectedCategory, selectedCategory,
       >
         All
       </li>
-      {sortCategories(categories).map((cat, index) => {
-        return (
-          <li
-            key={index}
-            onClick={e => handleCLick(e)}
-            className={cx(listStyles, {
-              'font-bold text-substrateGreen': cat.name.toLowerCase() === selectedCategory,
-            })}
-          >
-            {cat.name}
-          </li>
-        );
-      })}
+      {categories
+        .sort((a, b) => a.localeCompare(b))
+        .map((cat, index) => {
+          return (
+            <li
+              key={index}
+              data-name={cat}
+              onClick={e => handleCLick(e)}
+              className={cx(listStyles, {
+                'font-bold text-substrateGreen': cat === selectedCategory,
+              })}
+            >
+              {cat}
+            </li>
+          );
+        })}
     </ul>
   );
 }

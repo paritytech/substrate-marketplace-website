@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import CategorieFilter from './CategorieFilter';
 import MobileFilters from './MobileFilters';
@@ -13,13 +13,20 @@ export default function Filters({
   setSelectedCategory,
 }) {
   const versions = ['Substrate 2.0', 'Substrate 3.0'];
+  const [sanitizedCats, setSanitizedCats] = useState([]);
+
+  useEffect(() => {
+    categories.forEach(cat => {
+      setSanitizedCats(prevState => [...prevState, cat.name.toLowerCase()]);
+    });
+  }, []);
 
   return (
     <>
       <div className="lg:hidden">
         <MobileFilters
           versions={versions}
-          categories={categories}
+          categories={sanitizedCats}
           section={section}
           selectedVersion={selectedVersion}
           setSelectedVersion={setSelectedVersion}
@@ -38,7 +45,7 @@ export default function Filters({
         <CategorieFilter
           setSelectedCategory={setSelectedCategory}
           selectedCategory={selectedCategory}
-          categories={categories}
+          categories={sanitizedCats}
         />
       </div>
     </>
