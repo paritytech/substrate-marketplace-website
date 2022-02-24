@@ -34,7 +34,7 @@ export default function MobileFilters({
           ))}
         </select>
       </div>
-      {section != 'projects' && (
+      {section !== 'projects' && (
         <div className="flex flex-col mb-16">
           <label className="text-lg mb-3">Filter by Substrate Version</label>
           <select
