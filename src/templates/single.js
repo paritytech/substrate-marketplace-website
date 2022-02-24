@@ -1,4 +1,3 @@
-import DOMPurify from 'dompurify';
 import { graphql } from 'gatsby';
 import React from 'react';
 
@@ -12,7 +11,6 @@ import ProjectLogo from '../components/ui/ProjectLogo';
 export default function SingularPage({ pageContext }) {
   const { node, section } = pageContext;
   const { name, description, readmeContent } = node;
-  const cleanHtml = DOMPurify.sanitize(readmeContent);
 
   return (
     <Layout>
@@ -35,7 +33,7 @@ export default function SingularPage({ pageContext }) {
               </div>
             </div>
             {readmeContent ? (
-              <div className="max-w-4xl markdown-body" dangerouslySetInnerHTML={{ __html: cleanHtml }}></div>
+              <div className="max-w-4xl markdown-body" dangerouslySetInnerHTML={{ __html: readmeContent }}></div>
             ) : (
               <p className="max-w-4xl markdown-body">{description}</p>
             )}
