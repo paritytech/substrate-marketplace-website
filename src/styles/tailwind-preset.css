@@ -106,3 +106,9 @@ ol {
 ul {
   @apply list-disc;
 }
+
+/* Capatalizing Mobile Selects */
+select,
+select option {
+  text-transform: capitalize;
+}

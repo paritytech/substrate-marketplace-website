@@ -1,7 +1,6 @@
 import cx from 'classnames';
 import React from 'react';
 
-import { capitalize } from '../../../utils/capitalize';
 import { sortCategories } from '../../../utils/sortCategories';
 
 export default function MobileFilters({
@@ -30,7 +29,7 @@ export default function MobileFilters({
           <option value="all">All</option>
           {sortCategories(categories).map((cat, index) => (
             <option key={index} value={cat.name} className="capitalize">
-              {capitalize(cat.name)}
+              {cat.name}
             </option>
           ))}
         </select>

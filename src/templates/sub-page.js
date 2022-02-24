@@ -9,7 +9,6 @@ import LocalSearch from '../components/layout/sub-pages/LocalSearch';
 import Layout from '../components/site/Layout';
 import NavBreadcrumb from '../components/site/NavBreadcrumb';
 import SEO from '../components/site/SEO';
-import { capitalize } from '../utils/capitalize';
 import { slugify } from '../utils/url';
 
 export default function SingularPage({ pageContext }) {
@@ -33,7 +32,7 @@ export default function SingularPage({ pageContext }) {
 
   return (
     <Layout>
-      <SEO title={`${capitalize(section)}`} />
+      <SEO title={section.charAt(0).toUpperCase() + section.slice(1)} />
       <Section className="mb-9">
         <div className="mb-12">
           <NavBreadcrumb />
