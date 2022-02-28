@@ -9,7 +9,6 @@ import LocalSearch from '../components/layout/sub-pages/LocalSearch';
 import Layout from '../components/site/Layout';
 import NavBreadcrumb from '../components/site/NavBreadcrumb';
 import SEO from '../components/site/SEO';
-import { slugify } from '../utils/url';
 
 export default function SingularPage({ pageContext }) {
   const { categories, section, result } = pageContext;
@@ -18,15 +17,16 @@ export default function SingularPage({ pageContext }) {
   const [selectedCategory, setSelectedCategory] = useState('all');
 
   useEffect(() => {
-    if (location.hash) {
-      setSelectedCategory(location.hash.replace(/-/g, ' ').substring(1));
-    }
+    const urlParams = new URLSearchParams(window.location.search);
+    const category = urlParams.get('category');
+    category && setSelectedCategory(category);
   }, []);
 
   useEffect(() => {
-    if (selectedCategory != 'all') {
-      const hash = slugify(selectedCategory);
-      location.hash = `#${hash}`;
+    if (selectedCategory !== 'all') {
+      const urlParams = new URLSearchParams(window.location.search);
+      urlParams.set('category', selectedCategory);
+      history.pushState(null, null, '?' + urlParams.toString());
     }
   }, [selectedCategory]);
 
