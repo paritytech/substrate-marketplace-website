@@ -1,6 +1,5 @@
-import DOMPurify from 'dompurify';
 import { graphql } from 'gatsby';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import Section from '../components/layout/Section';
 import Sidebar from '../components/layout/single-template/Sidebar';
@@ -8,15 +7,12 @@ import Layout from '../components/site/Layout';
 import NavBreadcrumb from '../components/site/NavBreadcrumb';
 import SEO from '../components/site/SEO';
 import ProjectLogo from '../components/ui/ProjectLogo';
+import { sanitizeHtml } from '../utils/browser';
 
 export default function SingularPage({ pageContext }) {
   const { node, section } = pageContext;
   const { name, description, readmeContent } = node;
-  const [cleanHtml, setCleanHtml] = useState();
-
-  useEffect(() => {
-    setCleanHtml(DOMPurify.sanitize(readmeContent));
-  }, []);
+  const cleanHtml = sanitizeHtml(readmeContent);
 
   return (
     <Layout>
