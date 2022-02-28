@@ -1,3 +1,4 @@
+import DOMPurify from 'dompurify';
 import { graphql } from 'gatsby';
 import React from 'react';
 
@@ -7,12 +8,12 @@ import Layout from '../components/site/Layout';
 import NavBreadcrumb from '../components/site/NavBreadcrumb';
 import SEO from '../components/site/SEO';
 import ProjectLogo from '../components/ui/ProjectLogo';
-import { sanitizeHtml } from '../utils/browser';
+import { isBrowser } from '../utils/browser';
 
 export default function SingularPage({ pageContext }) {
   const { node, section } = pageContext;
   const { name, description, readmeContent } = node;
-  const cleanHtml = sanitizeHtml(readmeContent);
+  const cleanHtml = isBrowser ? DOMPurify.sanitize(readmeContent) : readmeContent;
 
   return (
     <Layout>
