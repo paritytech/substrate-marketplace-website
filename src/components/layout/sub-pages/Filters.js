@@ -12,8 +12,17 @@ export default function Filters({
   selectedCategory,
   setSelectedCategory,
 }) {
-  const versions = ['Substrate 2.0', 'Substrate 3.0'];
   const [sanitizedCats, setSanitizedCats] = useState([]);
+  const versions = [
+    {
+      text: 'Substrate 2.0',
+      value: 'VERSION_2_0',
+    },
+    {
+      text: 'Substrate 3.0',
+      value: 'VERSION_3_0',
+    },
+  ];
 
   useEffect(() => {
     categories.forEach(cat => {

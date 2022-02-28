@@ -40,13 +40,8 @@ export default function MobileFilters({
             value={selectedVersion}
             onChange={event => setSelectedVersion(event.target.value)}
           >
-            {versions.map((version, index) => {
-              return (
-                <option key={index} value={version === 'Substrate 3.0' ? 'VERSION_3_0' : 'VERSION_2_0'}>
-                  {version}
-                </option>
-              );
-            })}
+            <option value={versions[1].value}>{versions[1].text}</option>
+            <option value={versions[0].value}>{versions[0].text}</option>
           </select>
         </div>
       )}

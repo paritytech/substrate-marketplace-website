@@ -4,9 +4,23 @@ import React from 'react';
 import useComponentVisible from '../../../hooks/use-component-visible';
 import Icon from '../../default/Icon';
 
-export default function VersionFilter({ versions, selectedVersion, setSelectedVersion }) {
-  const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
+const VersionItem = ({ selectedVersion, setSelectedVersion, setIsComponentVisible, children, version }) => (
+  <div
+    className={cx('mb-6 cursor-pointer hover:text-substrateGreen hover:underline', {
+      'text-substrateGreen': selectedVersion === version,
+    })}
+    id={version}
+    onClick={e => {
+      setSelectedVersion(e.target.id);
+      setIsComponentVisible(false);
+    }}
+  >
+    {children}
+  </div>
+);
 
+export default function VersionFilter({ selectedVersion, setSelectedVersion, versions }) {
+  const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
   return (
     <div ref={ref}>
       <div className="relative ml-2 mb-10">
@@ -23,30 +37,22 @@ export default function VersionFilter({ versions, selectedVersion, setSelectedVe
         </div>
         {isComponentVisible && (
           <div className="absolute top-7 -left-2 border border-substrateGray-dark dark:border-substrateWhite bg-white dark:bg-substrateDark pt-6 px-6 rounded-xl shadow-md animate-fade-in-down">
-            {versions.map((version, index) => {
-              const currentVersion = () => {
-                if (version === 'Substrate 2.0') {
-                  return 'VERSION_2_0';
-                } else {
-                  return 'VERSION_3_0';
-                }
-              };
-              return (
-                <div
-                  key={index}
-                  className={cx('mb-6 cursor-pointer hover:text-substrateGreen hover:underline', {
-                    'text-substrateGreen': selectedVersion === currentVersion(),
-                  })}
-                  id={version === 'Substrate 3.0' ? 'VERSION_3_0' : 'VERSION_2_0'}
-                  onClick={e => {
-                    setSelectedVersion(e.target.id);
-                    setIsComponentVisible(false);
-                  }}
-                >
-                  {version}
-                </div>
-              );
-            })}
+            <VersionItem
+              selectedVersion={selectedVersion}
+              setSelectedVersion={setSelectedVersion}
+              setIsComponentVisible={setIsComponentVisible}
+              version={versions[0].value}
+            >
+              {versions[0].text}
+            </VersionItem>
+            <VersionItem
+              selectedVersion={selectedVersion}
+              setSelectedVersion={setSelectedVersion}
+              setIsComponentVisible={setIsComponentVisible}
+              version={versions[1].value}
+            >
+              {versions[1].text}
+            </VersionItem>
           </div>
         )}
       </div>
