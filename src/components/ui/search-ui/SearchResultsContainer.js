@@ -1,8 +1,10 @@
+import cx from 'classnames';
 import React from 'react';
 
+import { slugify } from '../../../utils/url';
 import SearchResult from './SearchResult';
 
-export default function SearchResultsContainer({ query, setQuery }) {
+export default function SearchResultsContainer({ query, setQuery, results }) {
   const suggestedTerms = [
     'pallet-balances',
     'pallet-authorship',
@@ -10,10 +12,17 @@ export default function SearchResultsContainer({ query, setQuery }) {
     'meataverse-runtime',
     'event-test-pallet',
   ];
+
   return (
     <div className="h-full text-left">
-      <div className={`${query.length === 0 ? 'invisible' : 'visible'} text-sm font-bold mb-3 animate-fade-in`}>
-        # RESULTS
+      <div
+        className={cx(
+          'text-sm font-bold mb-3 animate-fade-in',
+          { invisible: query.length === 0 },
+          { visible: query.length > 0 }
+        )}
+      >
+        {results.length} RESULTS
       </div>
       <div className="overflow-y-auto overscroll-contain h-[400px]">
         {query.length === 0 ? (
@@ -26,16 +35,15 @@ export default function SearchResultsContainer({ query, setQuery }) {
           </div>
         ) : (
           <div>
-            {/* {results.length > 0 ? (
+            {results.length > 0 ? (
               <div>
                 {results.map((result, index) => {
                   return (
                     <div key={index}>
                       <SearchResult
-                        slug={result.slug}
+                        slug={`/${result.section}s/${slugify(result.name)}/`}
                         section={result.section}
-                        category={result.category}
-                        title={result.title}
+                        title={result.name}
                       />
                     </div>
                   );
@@ -45,7 +53,7 @@ export default function SearchResultsContainer({ query, setQuery }) {
               <div>
                 <SearchResult error title={`Try another search term`} />
               </div>
-            )} */}
+            )}
           </div>
         )}
       </div>

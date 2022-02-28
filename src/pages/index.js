@@ -2,13 +2,14 @@ import { graphql } from 'gatsby';
 import React from 'react';
 
 import CardsList from '../components/layout/marketplace/CardsList';
+import SearchMarketplace from '../components/layout/marketplace/SearchMarketplace';
 import Section from '../components/layout/Section';
 import Layout from '../components/site/Layout';
 import SEO from '../components/site/SEO';
-import SearchMarketplace from '../components/ui/SearchMarketplace';
 
 export default function Home({ data }) {
   const { content } = data;
+
   return (
     <Layout mode="full">
       <SEO title="Home" />
