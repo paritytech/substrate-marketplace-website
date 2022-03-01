@@ -25,12 +25,10 @@ export default function SearchResult({ noLink, error, section, title, slug }) {
   return (
     <>
       {noLink || error ? (
-        <div>
-          <ResultItem error={error} section={section} title={title} />
-        </div>
+        <ResultItem error={error} section={section} title={title} />
       ) : (
         <Link to={slug}>
-          <ResultItem error={error} section={section} title={title} />
+          <ResultItem section={section} title={title} />
         </Link>
       )}
     </>
