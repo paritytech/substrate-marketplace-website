@@ -21,7 +21,7 @@ const ResultItem = ({ error, section, title }) => (
     </p>
   </div>
 );
-export default function SearchResult({ noLink, error, section, title, slug }) {
+export default function Results({ noLink, error, section, title, slug }) {
   return (
     <>
       {noLink || error ? (

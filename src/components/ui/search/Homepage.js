@@ -3,7 +3,7 @@ import React from 'react';
 
 import Icon from '../../default/Icon';
 
-export default function SearchHomepage({ isComponentVisible, setIsComponentVisible }) {
+export default function Homepage({ isComponentVisible, setIsComponentVisible }) {
   return (
     <div
       onClick={() => setIsComponentVisible(!isComponentVisible)}

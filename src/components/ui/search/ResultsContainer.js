@@ -2,9 +2,9 @@ import cx from 'classnames';
 import React from 'react';
 
 import { slugify } from '../../../utils/url';
-import SearchResult from './SearchResult';
+import Results from './Results';
 
-export default function SearchResultsContainer({ query, setQuery, results }) {
+export default function ResultsContainer({ query, setQuery, results }) {
   const suggestedTerms = [
     'pallet-balances',
     'pallet-authorship',
@@ -29,7 +29,7 @@ export default function SearchResultsContainer({ query, setQuery, results }) {
           <div>
             {suggestedTerms.map((term, index) => (
               <div className="cursor-pointer" onClick={() => setQuery(term)} key={index}>
-                <SearchResult noLink section={`Suggestion`} title={term} />
+                <Results noLink section={`Suggestion`} title={term} />
               </div>
             ))}
           </div>
@@ -40,7 +40,7 @@ export default function SearchResultsContainer({ query, setQuery, results }) {
                 {results.map((result, index) => {
                   return (
                     <div key={index}>
-                      <SearchResult
+                      <Results
                         slug={`/${result.section}s/${slugify(result.name)}/`}
                         section={result.section}
                         title={result.name}
@@ -51,7 +51,7 @@ export default function SearchResultsContainer({ query, setQuery, results }) {
               </div>
             ) : (
               <div>
-                <SearchResult error title={`Try another search term`} />
+                <Results error title={`Try another search term`} />
               </div>
             )}
           </div>

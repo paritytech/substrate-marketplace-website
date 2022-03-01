@@ -3,10 +3,10 @@ import React, { useEffect, useState } from 'react';
 import useComponentVisible from '../../../hooks/use-component-visible';
 import useSearchData from '../../../hooks/use-search-data';
 import Modal from '../../ui/Modal';
-import SearchHomepage from '../../ui/search-ui/SearchHomepage';
-import SearchInput from '../../ui/search-ui/SearchInput';
-import SearchResultsContainer from '../../ui/search-ui/SearchResultsContainer';
-import SearchSectionCheckbox from '../../ui/search-ui/SearchSectionCheckbox';
+import Checkbox from '../../ui/search/Checkbox';
+import Homepage from '../../ui/search/Homepage';
+import Input from '../../ui/search/Input';
+import ResultsContainer from '../../ui/search/ResultsContainer';
 
 export default function SearchMarketplace() {
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
@@ -46,24 +46,16 @@ export default function SearchMarketplace() {
 
   return (
     <>
-      <SearchHomepage isComponentVisible={isComponentVisible} setIsComponentVisible={setIsComponentVisible} />
+      <Homepage isComponentVisible={isComponentVisible} setIsComponentVisible={setIsComponentVisible} />
       {isComponentVisible && (
         <Modal id={ref} closeModal={setIsComponentVisible}>
-          <SearchInput query={query} setQuery={setQuery} />
+          <Input query={query} setQuery={setQuery} />
           <div className="flex flex-col sm:flex-row mb-6">
-            <SearchSectionCheckbox
-              isChecked={isProjectsChecked}
-              setIsChecked={setIsProjectsChecked}
-              name={'Projects'}
-            />
-            <SearchSectionCheckbox isChecked={isPalletsChecked} setIsChecked={setIsPalletsChecked} name={'Pallets'} />
-            <SearchSectionCheckbox
-              isChecked={isRuntimesChecked}
-              setIsChecked={setIsRuntimesChecked}
-              name={'Runtimes'}
-            />
+            <Checkbox isChecked={isProjectsChecked} setIsChecked={setIsProjectsChecked} name={'Projects'} />
+            <Checkbox isChecked={isPalletsChecked} setIsChecked={setIsPalletsChecked} name={'Pallets'} />
+            <Checkbox isChecked={isRuntimesChecked} setIsChecked={setIsRuntimesChecked} name={'Runtimes'} />
           </div>
-          <SearchResultsContainer query={query} setQuery={setQuery} results={displayedResults} />
+          <ResultsContainer query={query} setQuery={setQuery} results={displayedResults} />
         </Modal>
       )}
     </>

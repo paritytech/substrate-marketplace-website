@@ -2,7 +2,7 @@ import React from 'react';
 
 import Icon from '../../default/Icon';
 
-export default function SearchInput({ query, setQuery }) {
+export default function Input({ query, setQuery }) {
   return (
     <div className="flex items-center justify-between w-full pb-0.5 mb-6 border-b-2 border-substrateGray">
       <Icon name="searchIcon" className="h-4 w-4 md:h-6 md:w-6 fill-current text-substrateDark dark:text-white" />

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function SearchSectionCheckbox({ isChecked, setIsChecked, name }) {
+export default function Checkbox({ isChecked, setIsChecked, name }) {
   const handleChange = event => {
     setIsChecked(event.target.checked);
   };
