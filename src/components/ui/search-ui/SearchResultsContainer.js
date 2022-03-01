@@ -17,12 +17,12 @@ export default function SearchResultsContainer({ query, setQuery, results }) {
     <div className="h-full text-left">
       <div
         className={cx(
-          'text-sm font-bold mb-3 animate-fade-in',
+          'text-sm font-bold mb-3 animate-fade-in uppercase',
           { invisible: query.length === 0 },
           { visible: query.length > 0 }
         )}
       >
-        {results.length} RESULTS
+        {results.length} results
       </div>
       <div className="overflow-y-auto overscroll-contain h-[400px]">
         {query.length === 0 ? (
