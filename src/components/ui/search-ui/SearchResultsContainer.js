@@ -10,7 +10,7 @@ export default function SearchResultsContainer({ query, setQuery, results }) {
     'pallet-authorship',
     'beefy-node-runtime',
     'meataverse-runtime',
-    'event-test-pallet',
+    'evan-test-pallet',
   ];
 
   return (

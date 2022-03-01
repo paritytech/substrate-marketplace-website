@@ -19,9 +19,10 @@ export default function SearchMarketplace() {
   const [displayedResults, setDisplayedResults] = useState([]);
 
   useEffect(() => {
-    const sanitizedQuery = query.toLowerCase().replace(/\s/g, '');
+    const sanitizedQuery = query.toLowerCase();
     const filteredData = searchData.filter(
-      result => result.name.includes(sanitizedQuery) || result.description.includes(sanitizedQuery)
+      result =>
+        result.name.toLowerCase().includes(sanitizedQuery) || result.description.toLowerCase().includes(sanitizedQuery)
     );
     setResults(filteredData);
   }, [query]);
@@ -36,10 +37,11 @@ export default function SearchMarketplace() {
       .filter(([, val]) => val)
       .map(([key]) => key);
     if (selectedSections.length === 0) {
-      return setDisplayedResults(results);
+      setDisplayedResults(results);
+    } else {
+      const filteredResults = results.filter(result => selectedSections.indexOf(result.section) >= 0);
+      setDisplayedResults(filteredResults);
     }
-    const filteredResults = results.filter(result => selectedSections.indexOf(result.section) >= 0);
-    setDisplayedResults(filteredResults);
   }, [results, isProjectsChecked, isRuntimesChecked, isPalletsChecked]);
 
   return (
@@ -49,15 +51,17 @@ export default function SearchMarketplace() {
         <Modal id={ref} closeModal={setIsComponentVisible}>
           <SearchInput query={query} setQuery={setQuery} />
           <div className="flex flex-col sm:flex-row mb-6">
-            <SearchSectionCheckbox isCheced={isProjectsChecked} setIsChecked={setIsProjectsChecked}>
-              Projects
-            </SearchSectionCheckbox>
-            <SearchSectionCheckbox isCheced={isPalletsChecked} setIsChecked={setIsPalletsChecked}>
-              Pallets
-            </SearchSectionCheckbox>
-            <SearchSectionCheckbox isCheced={isRuntimesChecked} setIsChecked={setIsRuntimesChecked}>
-              Runtimes
-            </SearchSectionCheckbox>
+            <SearchSectionCheckbox
+              isChecked={isProjectsChecked}
+              setIsChecked={setIsProjectsChecked}
+              name={'Projects'}
+            />
+            <SearchSectionCheckbox isChecked={isPalletsChecked} setIsChecked={setIsPalletsChecked} name={'Pallets'} />
+            <SearchSectionCheckbox
+              isChecked={isRuntimesChecked}
+              setIsChecked={setIsRuntimesChecked}
+              name={'Runtimes'}
+            />
           </div>
           <SearchResultsContainer query={query} setQuery={setQuery} results={displayedResults} />
         </Modal>
