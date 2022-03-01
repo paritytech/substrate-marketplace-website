@@ -27,6 +27,7 @@ const createPalletPages = async ({ graphql, actions }) => {
               license
               totalDownloads
               readme
+              readmeContent
               listingInsights {
                 insights {
                   id

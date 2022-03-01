@@ -32,6 +32,7 @@ const createProjectPages = async ({ graphql, actions }) => {
                 stars
               }
               readme
+              readmeContent
               documentation
               projectRelations {
                 relations {
