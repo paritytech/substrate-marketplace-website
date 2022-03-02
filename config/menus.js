@@ -1,24 +1,24 @@
 const WEBSITE_URL = process.env.GATSBY_WEBSITE_URL;
 const DOCS_URL = process.env.GATSBY_DOCS_URL;
-const MARKETPLACE_URL = process.env.GATSBY_MARKETPLACE_URL;
+// const MARKETPLACE_URL = process.env.GATSBY_MARKETPLACE_URL;
 
 /* the main menu, ids of items must match
    the submenu's key of this js object */
 const main = [
   {
-    url: WEBSITE_URL + '/technology',
+    url: '',
     id: 'technology',
   },
   {
-    url: WEBSITE_URL + '/developers',
+    url: '',
     id: 'developers',
   },
   {
-    url: WEBSITE_URL + '/vision',
+    url: '',
     id: 'vision',
   },
   {
-    url: WEBSITE_URL + '/ecosystem',
+    url: '',
     id: 'ecosystem',
   },
 ];
@@ -26,23 +26,23 @@ const main = [
 /* sub menus, matching the main menu items' "id" */
 const technology = [
   {
-    url: WEBSITE_URL,
+    url: WEBSITE_URL + '/technology',
     id: 'technology.overview',
   },
   {
-    url: WEBSITE_URL + '/flexible',
+    url: WEBSITE_URL + '/technology/flexible',
     id: 'technology.flexible',
   },
   {
-    url: WEBSITE_URL + '/open',
+    url: WEBSITE_URL + '/technology/open',
     id: 'technology.open',
   },
   {
-    url: WEBSITE_URL + '/interoperable',
+    url: WEBSITE_URL + '/technology/interoperable',
     id: 'technology.interoperable',
   },
   {
-    url: WEBSITE_URL + '/future-proof',
+    url: WEBSITE_URL + '/technology/future-proof',
     id: 'technology.future-proof',
   },
 ];
@@ -53,34 +53,34 @@ const developers = [
     id: 'developers.home',
   },
   {
-    url: DOCS_URL + '/v3/getting-started/overview/',
+    url: DOCS_URL + '/v3/getting-started/overview',
     id: 'developers.docs',
   },
   {
-    url: DOCS_URL + '/how-to-guides/v3/',
+    url: DOCS_URL + '/how-to-guides/v3',
     id: 'developers.how-to-guides',
   },
   {
-    url: DOCS_URL + '/tutorials/v3/',
+    url: DOCS_URL + '/tutorials/v3',
     id: 'developers.tutorials',
   },
   {
-    url: MARKETPLACE_URL,
+    url: '',
     id: 'developers.marketplace',
   },
   {
-    url: DOCS_URL + '/rustdocs/',
+    url: DOCS_URL + '/rustdocs',
     id: 'developers.rustdocs',
   },
   {
-    url: DOCS_URL + '/playground/',
+    url: DOCS_URL + '/playground',
     id: 'developers.playground',
   },
 ];
 
 const vision = [
   {
-    url: WEBSITE_URL + '/substrate-and-polkadot',
+    url: WEBSITE_URL + '/vision/substrate-and-polkadot',
     id: 'vision.substrate-and-polkadot',
   },
 ];
@@ -91,25 +91,25 @@ const ecosystem = [
     id: 'ecosystem.home',
   },
   {
-    url: WEBSITE_URL + '/projects',
+    url: WEBSITE_URL + '/ecosystem/projects',
     id: 'ecosystem.projects',
   },
   {
-    url: WEBSITE_URL + '/substrate-builders-program',
+    url: WEBSITE_URL + '/ecosystem/substrate-builders-program',
     id: 'ecosystem.substrate-builders-program',
   },
   {
-    url: WEBSITE_URL + '/opportunities',
+    url: WEBSITE_URL + '/ecosystem/opportunities',
     id: 'ecosystem.opportunities',
     child: 'opportunities',
   },
   {
-    url: WEBSITE_URL + '/resources',
+    url: WEBSITE_URL + '/ecosystem/resources',
     id: 'ecosystem.resources',
     child: 'resources',
   },
   {
-    url: WEBSITE_URL + '/connect',
+    url: WEBSITE_URL + '/ecosystem/connect',
     id: 'ecosystem.connect',
     child: 'connect',
   },
@@ -119,41 +119,41 @@ const ecosystem = [
 
 const opportunities = [
   {
-    url: WEBSITE_URL + '/hackathons',
+    url: WEBSITE_URL + '/ecosystem/opportunities/hackathons',
     id: 'ecosystem.opportunities.hackathons',
   },
   {
-    url: WEBSITE_URL + '/grants',
+    url: WEBSITE_URL + '/ecosystem/opportunities/grants',
     id: 'ecosystem.opportunities.grants',
   },
   {
-    url: WEBSITE_URL + '/jobs',
+    url: WEBSITE_URL + '/ecosystem/opportunities/jobs',
     id: 'ecosystem.opportunities.jobs',
   },
 ];
 
 const resources = [
   {
-    url: WEBSITE_URL + '/seminar',
+    url: WEBSITE_URL + '/ecosystem/resources/seminar',
     id: 'ecosystem.resources.seminar',
   },
   {
-    url: WEBSITE_URL + '/awesome-substrate',
+    url: WEBSITE_URL + '/ecosystem/resources/awesome-substrate',
     id: 'ecosystem.resources.awesome-substrate',
   },
 ];
 
 const connect = [
   {
-    url: WEBSITE_URL + '/contact',
+    url: WEBSITE_URL + '/ecosystem/connect/contact',
     id: 'ecosystem.resources.contact',
   },
   {
-    url: WEBSITE_URL + 'https://www.parity.io/events/',
+    url: 'https://www.parity.io/events/',
     id: 'ecosystem.resources.events',
   },
   {
-    url: WEBSITE_URL + '/newsletter',
+    url: WEBSITE_URL + '/ecosystem/connect/newsletter',
     id: 'ecosystem.resources.newsletter',
   },
   {
@@ -164,7 +164,7 @@ const connect = [
 
 const legal = [
   {
-    url: WEBSITE_URL + 'https://www.parity.io/privacy/',
+    url: 'https://www.parity.io/privacy/',
     id: 'legal.privacy',
   },
   {

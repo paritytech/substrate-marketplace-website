@@ -37,8 +37,8 @@ const Runtimes = ({ data }) => (
   <ul className={unorderedListClass}>
     {data.map(({ listing }, index) => {
       return (
-        <li key={index}>
-          <Link to={`/runtimes/${listing.name}`} className={listClass}>
+        <li key={index} className={`mb-2 ${blueText}`}>
+          <Link to={`/runtimes/${listing.name}`} className={`pb-0.5 ${hoverStyles}`}>
             {listing.name}
           </Link>
         </li>

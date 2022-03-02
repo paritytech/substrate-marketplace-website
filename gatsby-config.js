@@ -131,6 +131,15 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: { maxWidth: 1024 },
           },
+          /* format (images) file path, when used in markdown file frontmatter;
+              Allow use of project "relative path": ex: /media;
+              (docs: https://www.gatsbyjs.com/plugins/gatsby-remark-normalize-paths) */
+          {
+            resolve: 'gatsby-remark-normalize-paths',
+            options: {
+              pathFields: ['image'],
+            },
+          },
           // links from markdown open in new tab by default
           {
             resolve: `gatsby-remark-external-links`,

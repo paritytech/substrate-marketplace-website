@@ -1,19 +1,30 @@
-// import cx from 'classnames';
 import { graphql } from 'gatsby';
 import React from 'react';
 
+import CardsList from '../components/layout/marketplace/CardsList';
+import SearchMarketplace from '../components/layout/marketplace/SearchMarketplace';
 import Section from '../components/layout/Section';
 import Layout from '../components/site/Layout';
 import SEO from '../components/site/SEO';
 
-export default function Home() {
+export default function Home({ data }) {
+  const { content } = data;
+
   return (
     <Layout mode="full">
       <SEO title="Home" />
-      <Section>
-        <h1 className="mb-20 mt-20 md:mt-52 text-4xl sm:text-5xl md:text-6xl font-body font-extrabold">
-          marketplace home
-        </h1>
+      <Section className="sm:text-center">
+        <h1 className="mb-8 text-3xl sm:text-5xl md:text-6xl font-title font-extrabold">Substrate Marketplace</h1>
+        <div className="sm:max-w-lg mx-auto mb-10">
+          <p className="font-medium leading-8">
+            Where blockchain innovators discover & share reusable pallets for use with Parity Substrate, the open-source
+            Blockchain framework.
+          </p>
+        </div>
+        <SearchMarketplace />
+      </Section>
+      <Section className="flex justify-center">
+        <CardsList data={content.edges} />
       </Section>
     </Layout>
   );
@@ -27,6 +38,23 @@ export const query = graphql`
           ns
           data
           language
+        }
+      }
+    }
+    content: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "//(categories)/" } }) {
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            link
+            description
+            image {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+          }
         }
       }
     }
