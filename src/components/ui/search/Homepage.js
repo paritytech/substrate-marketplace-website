@@ -1,11 +1,12 @@
 import cx from 'classnames';
 import React from 'react';
 
-import Icon from '../default/Icon';
+import Icon from '../../default/Icon';
 
-export default function SearchMarketplace() {
+export default function Homepage({ isComponentVisible, setIsComponentVisible }) {
   return (
     <div
+      onClick={() => setIsComponentVisible(!isComponentVisible)}
       className={cx(
         `flex items-center justify-between mx-auto p-2 border-2 border-transparent border-b-substrateGray cursor-text max-w-2xl`,
         `lg:p-6 lg:rounded`,
