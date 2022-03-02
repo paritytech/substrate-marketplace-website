@@ -35,10 +35,12 @@ import logoAstar from '../../images/svg/logo-astar.svg';
 import logoMoonbeam from '../../images/svg/logo-moonbeam.svg';
 import logoWhite from '../../images/svg/logo-white.svg';
 import mail from '../../images/svg/mail.svg';
+import noResults from '../../images/svg/no-results.svg';
 import paperplane from '../../images/svg/paperplane.svg';
 import pen from '../../images/svg/pen.svg';
 import placeholder from '../../images/svg/placeholder.svg';
 import polkadotLogo from '../../images/svg/polkadot-logo.svg';
+import search from '../../images/svg/search.svg';
 import seminar from '../../images/svg/seminar.svg';
 import shieldCheckSolid from '../../images/svg/shield-check-solid.svg';
 import smile from '../../images/svg/smile.svg';
@@ -94,10 +96,10 @@ import repo from '../../images/svg/ui/repo.svg';
 import searchIcon from '../../images/svg/ui/search.svg';
 import sidebarToggle from '../../images/svg/ui/sidebar-toggle.svg';
 import star from '../../images/svg/ui/star.svg';
+import starWithCircle from '../../images/svg/ui/star.svg';
 import sun from '../../images/svg/ui/sun.svg';
 import w3fLogo from '../../images/svg/w3f-logo.svg';
 import waLogo from '../../images/svg/wa-logo.svg';
-
 const iconsMap = {
   /* home */
   developers: developers,
@@ -147,10 +149,12 @@ const iconsMap = {
   'sidebar-toggle': sidebarToggle,
   docs: docs,
   moon: moon,
+  search: search,
   sun: sun,
   'external-link': externalLink,
   calendar: calendar,
   star: star,
+  starWithCircle: starWithCircle,
   'diamond-yellow': diamondYellow,
   'diamond-pink': diamondPink,
   'diamond-purple': diamondPurple,
@@ -159,6 +163,7 @@ const iconsMap = {
   tools: tools,
   repo: repo,
   link: link,
+  noResults: noResults,
   searchIcon: searchIcon,
   /* mockup */
   placeholder: placeholder,

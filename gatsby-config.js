@@ -215,20 +215,9 @@ module.exports = {
         // exclude: optional, include this array to exclude paths you don't want to
         // generate breadcrumbs for (see below for details).
         exclude: [`**/dev-404-page/**`, `**/404/**`, `**/404.html`, `**/offline-plugin-app-shell-fallback/**`],
-        crumbLabelUpdates: [
-          {
-            pathname: '/projects',
-            crumbLabel: 'Projects',
-          },
-          {
-            pathname: '/runtimes',
-            crumbLabel: 'Runtimes',
-          },
-          {
-            pathname: '/pallets',
-            crumbLabel: 'Pallets',
-          },
-        ],
+        // trailingSlashes: optional, will add trailing slashes to the end
+        // of crumb pathnames. default is false
+        trailingSlashes: true,
       },
     },
     'gatsby-plugin-sitemap',

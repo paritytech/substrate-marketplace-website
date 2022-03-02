@@ -48,11 +48,18 @@ const createRuntimePages = async ({ graphql, actions }) => {
             }
           }
         }
+        marketplaceCategories(type: RUNTIME) {
+          name
+        }
       }
     }
   `);
   if (!result || !result.data) return;
 
+  const section = 'runtimes';
+  const categories = result.data.marketplace.marketplaceCategories;
+
+  /* Single Runtime Pages e.g. siteurl.com/runtimes/runtime-name */
   result.data.marketplace.search.results.forEach(node => {
     const slug = slugify(node.name);
     const section = 'runtimes';
@@ -65,6 +72,17 @@ const createRuntimePages = async ({ graphql, actions }) => {
         section,
       },
     });
+  });
+
+  /* Aggregated Runtimes siteurl.com/runtimes */
+  createPage({
+    path: `/${section}/`,
+    component: path.resolve(`./src/templates/sub-page.js`),
+    context: {
+      result,
+      categories,
+      section,
+    },
   });
 };
 

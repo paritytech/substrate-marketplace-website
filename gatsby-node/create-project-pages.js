@@ -47,11 +47,17 @@ const createProjectPages = async ({ graphql, actions }) => {
             }
           }
         }
+        marketplaceCategories(type: PROJECT) {
+          name
+        }
       }
     }
   `);
   if (!result || !result.data) return;
+  const section = 'projects';
+  const categories = result.data.marketplace.marketplaceCategories;
 
+  /* Single Project Pages e.g. siteurl.com/projects/project-name */
   result.data.marketplace.search.results.forEach(node => {
     const slug = slugify(node.name);
     const section = 'projects';
@@ -64,6 +70,17 @@ const createProjectPages = async ({ graphql, actions }) => {
         section,
       },
     });
+  });
+
+  /* Aggregated Projects siteurl.com/projects */
+  createPage({
+    path: `/${section}/`,
+    component: path.resolve(`./src/templates/sub-page.js`),
+    context: {
+      result,
+      categories,
+      section,
+    },
   });
 };
 

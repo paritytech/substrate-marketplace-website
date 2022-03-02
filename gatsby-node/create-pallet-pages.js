@@ -57,14 +57,20 @@ const createPalletPages = async ({ graphql, actions }) => {
             }
           }
         }
+        marketplaceCategories(type: PALLET) {
+          name
+        }
       }
     }
   `);
   if (!result || !result.data) return;
 
+  const section = 'pallets';
+  const categories = result.data.marketplace.marketplaceCategories;
+
+  /* Single Pallet Pages e.g. siteurl.com/pallets/pallet-name */
   result.data.marketplace.search.results.forEach(node => {
     const slug = slugify(node.name);
-    const section = 'pallets';
     createPage({
       path: `${section}/${slug}/`,
       component: path.resolve(`./src/templates/single.js`),
@@ -74,6 +80,17 @@ const createPalletPages = async ({ graphql, actions }) => {
         section,
       },
     });
+  });
+
+  /* Aggregated Pallets siteurl.com/pallets */
+  createPage({
+    path: `/${section}/`,
+    component: path.resolve(`./src/templates/sub-page.js`),
+    context: {
+      result,
+      categories,
+      section,
+    },
   });
 };
 
