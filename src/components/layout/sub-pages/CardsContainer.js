@@ -3,12 +3,23 @@ import React, { useEffect, useState } from 'react';
 
 import Icon from '../../default/Icon';
 import { Card, ProjectCard } from './Cards';
+import Pagination from './Pagination';
 
 export default function CardsContainer({ data, section, selectedVersion, searchQuery, selectedCategory }) {
   const cardsData = data.data.marketplace.search.results;
   const [displayedData, setDisplayedData] = useState([]);
   const [dataAvailable, setDataAvailable] = useState(false);
   const [noResults, setNoResults] = useState(false);
+
+  /* Pagination State & Calculation*/
+  const [currentPage, setCurrentPage] = useState(1);
+  const [cardsPerPage] = useState(12);
+  const indexOfLastCard = currentPage * cardsPerPage;
+  const indexOfFirstard = indexOfLastCard - cardsPerPage;
+  const currentCards = displayedData.slice(indexOfFirstard, indexOfLastCard);
+  const paginate = number => {
+    setCurrentPage(number);
+  };
 
   useEffect(() => {
     const filteredData = cardsData
@@ -39,35 +50,50 @@ export default function CardsContainer({ data, section, selectedVersion, searchQ
   useEffect(() => {
     displayedData.length > 0 ? setDataAvailable(true) : setDataAvailable(false);
     displayedData.length === 0 ? setNoResults(true) : setNoResults(false);
+    /* on incoming data change (on search or category 
+       change), resetting pagination                 */
+    paginate(1);
   }, [displayedData]);
 
   return (
     <>
       {dataAvailable ? (
-        <div
-          className={cx('w-1/1 grid md:grid-cols-2 2xl:grid-cols-3', { ' gap-y-8 md:gap-x-6': section != 'projects' })}
-        >
-          {displayedData.map((each, index) => (
-            <div key={index}>
-              {section === 'projects' ? (
-                <ProjectCard
-                  name={each.name}
-                  categories={each.categories}
-                  stars={each.listingInsights.stars}
-                  description={each.description}
-                />
-              ) : (
-                <Card
-                  section={section}
-                  name={each.name}
-                  version={each.version}
-                  authors={each.authors}
-                  description={each.description}
-                />
-              )}
-            </div>
-          ))}
-        </div>
+        <>
+          <div
+            className={cx('mb-8 w-1/1 grid md:grid-cols-2 2xl:grid-cols-3', {
+              ' gap-y-8 md:gap-x-6': section != 'projects',
+            })}
+          >
+            {currentCards.map((each, index) => (
+              <div key={index}>
+                {section === 'projects' ? (
+                  <ProjectCard
+                    name={each.name}
+                    categories={each.categories}
+                    stars={each.listingInsights.stars}
+                    description={each.description}
+                  />
+                ) : (
+                  <Card
+                    section={section}
+                    name={each.name}
+                    version={each.version}
+                    authors={each.authors}
+                    description={each.description}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+          {displayedData.length > 12 && (
+            <Pagination
+              cardsPerPage={cardsPerPage}
+              totalCards={displayedData.length}
+              currentPage={currentPage}
+              paginate={paginate}
+            />
+          )}
+        </>
       ) : (
         <>
           {noResults && (

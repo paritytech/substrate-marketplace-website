@@ -13,7 +13,7 @@ const Card = ({ name, section, version, authors, description }) => {
         <div className="absolute top-0 right-0 py-2 px-3 bg-substrateGreen-light dark:bg-substrateGreen rounded-tr-md rounded-bl-md font-bold text-xs">
           {version}
         </div>
-        <h5 className="mb-2 truncate md:w-60 xl:w-auto 2xl:w-60">{name}</h5>
+        <h5 className="mb-2 truncate w-60">{name}</h5>
         <p className="text-sm mb-4">{authors ? authors : 'N/A'}</p>
         <p className="text-sm mb-0 h-20 line-clamp-4">{description}</p>
       </div>
