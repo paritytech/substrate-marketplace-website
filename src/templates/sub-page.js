@@ -36,7 +36,7 @@ export default function SingularPage({ pageContext }) {
     <Layout>
       <SEO title={section.charAt(0).toUpperCase() + section.slice(1)} />
       <Section className="mb-9">
-        <div className="mb-12">
+        <div className="mb-12 underline-animate underline-animate-thin">
           <NavBreadcrumb />
         </div>
         <div className="mb-12">
