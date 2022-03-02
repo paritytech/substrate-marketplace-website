@@ -23,10 +23,12 @@ export default function SingularPage({ pageContext }) {
   }, []);
 
   useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
     if (selectedCategory !== 'all') {
-      const urlParams = new URLSearchParams(window.location.search);
       urlParams.set('category', selectedCategory);
       history.pushState(null, null, '?' + urlParams.toString());
+    } else {
+      history.pushState('', document.title, location.pathname);
     }
   }, [selectedCategory]);
 

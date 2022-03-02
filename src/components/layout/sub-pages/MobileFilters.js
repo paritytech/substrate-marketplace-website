@@ -18,9 +18,6 @@ export default function MobileFilters({
           className="dark:bg-substrateDark"
           value={selectedCategory}
           onChange={event => {
-            if (event.target.value === 'all') {
-              history.pushState('', document.title, location.pathname);
-            }
             setSelectedCategory(event.target.value);
           }}
         >

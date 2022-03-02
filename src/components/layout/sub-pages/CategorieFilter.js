@@ -5,9 +5,6 @@ export default function CategorieFilter({ setSelectedCategory, selectedCategory,
   const listStyles = 'mb-8 capitalize cursor-pointer hover:text-substrateGreen';
   const handleCLick = event => {
     const dataName = event.target.getAttribute('data-name');
-    if (dataName === 'all') {
-      history.pushState('', document.title, location.pathname);
-    }
     setSelectedCategory(dataName);
   };
 
