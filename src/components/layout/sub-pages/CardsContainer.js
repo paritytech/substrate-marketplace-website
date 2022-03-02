@@ -6,8 +6,9 @@ import { Card, ProjectCard } from './Cards';
 
 export default function CardsContainer({ data, section, selectedVersion, searchQuery, selectedCategory }) {
   const cardsData = data.data.marketplace.search.results;
-  const [displayedData, setDisplayedData] = useState({});
-  const [displayedDataAvailable, setDisplayedDataAvailable] = useState();
+  const [displayedData, setDisplayedData] = useState([]);
+  const [dataAvailable, setDataAvailable] = useState(false);
+  const [noResults, setNoResults] = useState(false);
 
   useEffect(() => {
     const filteredData = cardsData
@@ -36,12 +37,13 @@ export default function CardsContainer({ data, section, selectedVersion, searchQ
   }, [selectedCategory, selectedVersion, searchQuery]);
 
   useEffect(() => {
-    displayedData.length === 0 ? setDisplayedDataAvailable(true) : setDisplayedDataAvailable(false);
+    displayedData.length > 0 ? setDataAvailable(true) : setDataAvailable(false);
+    displayedData.length === 0 ? setNoResults(true) : setNoResults(false);
   }, [displayedData]);
 
   return (
     <>
-      {displayedData.length > 0 ? (
+      {dataAvailable ? (
         <div
           className={cx('w-1/1 grid md:grid-cols-2 2xl:grid-cols-3', { ' gap-y-8 md:gap-x-6': section != 'projects' })}
         >
@@ -68,7 +70,7 @@ export default function CardsContainer({ data, section, selectedVersion, searchQ
         </div>
       ) : (
         <>
-          {displayedDataAvailable && (
+          {noResults && (
             <div className="border dark:border-substrateGray-dark rounded-md flex flex-col items-center py-8">
               <Icon name="noResults" className="fill-current mb-8" />
               <p className="text-center px-4">No {section} found. Try a different version or search query.</p>
