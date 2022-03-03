@@ -21,7 +21,7 @@ export default function SingularPage({ pageContext }) {
       <Section>
         <article className="lg:flex">
           <div className="lg:flex-grow mb-10 lg:mb-20 pr-4 underline-animate underline-animate-thin">
-            <div className="mb-12">
+            <div className="mb-12 capitalize">
               <NavBreadcrumb />
             </div>
             <div className="mb-12">
