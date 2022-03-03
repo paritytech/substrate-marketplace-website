@@ -36,9 +36,12 @@ export default function SingularPage({ pageContext }) {
               </div>
             </div>
             {readmeContent ? (
-              <div className="max-w-4xl markdown-body" dangerouslySetInnerHTML={{ __html: cleanHtml }}></div>
+              <div
+                className="xl:max-w-4xl lg:max-w-2xl markdown-body"
+                dangerouslySetInnerHTML={{ __html: cleanHtml }}
+              ></div>
             ) : (
-              <p className="max-w-4xl markdown-body">{description}</p>
+              <p className="xl:max-w-4xl lg:max-w-2xl  markdown-body">{description}</p>
             )}
           </div>
           <Sidebar data={node} section={section} />
