@@ -9,26 +9,25 @@ import LocalSearch from '../components/layout/sub-pages/LocalSearch';
 import Layout from '../components/site/Layout';
 import NavBreadcrumb from '../components/site/NavBreadcrumb';
 import SEO from '../components/site/SEO';
+import { urlParams } from '../utils/browser';
 
 export default function SingularPage({ pageContext }) {
   const { categories, section, result } = pageContext;
   const [selectedVersion, setSelectedVersion] = useState('VERSION_3_0');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [compMounted, setCompMounted] = useState(false);
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
     const category = urlParams.get('category');
     category && setSelectedCategory(category);
+    setCompMounted(true);
   }, []);
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    if (selectedCategory !== 'all') {
+    if (compMounted) {
       urlParams.set('category', selectedCategory);
       history.pushState(null, null, '?' + urlParams.toString());
-    } else {
-      history.pushState('', document.title, location.pathname);
     }
   }, [selectedCategory]);
 
