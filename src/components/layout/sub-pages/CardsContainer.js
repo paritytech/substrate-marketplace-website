@@ -65,6 +65,7 @@ export default function CardsContainer({ data, section, selectedVersion, searchQ
                   version={each.version}
                   authors={each.authors}
                   description={each.description}
+                  stars={each.listingInsights.stars}
                 />
               )}
             </div>
