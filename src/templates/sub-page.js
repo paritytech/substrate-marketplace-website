@@ -59,7 +59,7 @@ export default function SingularPage({ pageContext }) {
             selectedCategory={selectedCategory}
             setSelectedCategory={setSelectedCategory}
           />
-          <div className="lg:flex-grow min-h-screen">
+          <div className="lg:flex-grow">
             <CardsContainer
               data={result}
               section={section}

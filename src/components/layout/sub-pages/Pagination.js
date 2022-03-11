@@ -6,13 +6,21 @@ export default function Pagination({ cardsPerPage, totalCards, currentPage, pagi
   for (let i = 1; i <= Math.ceil(totalCards / cardsPerPage); i++) {
     pageNumbers.push(i);
   }
+
+  const handleClick = number => {
+    window.scrollTo({
+      top: 200,
+      behavior: 'smooth',
+    });
+    paginate(number);
+  };
   return (
     <nav>
       <ul className="list-none flex flex-wrap justify-center">
         {pageNumbers.map(number => (
           <li
             key={number}
-            onClick={() => paginate(number)}
+            onClick={() => handleClick(number)}
             className={cx(
               'mx-2 w-7 h-auto rounded-lg text-lg text-center cursor-pointer',
               'duration-150 ease-in-out hover:bg-substrateDark hover:text-white',
