@@ -1,12 +1,14 @@
 import cx from 'classnames';
 import React from 'react';
 
-export default function Pagination({ cardsPerPage, totalCards, currentPage, paginate }) {
-  const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(totalCards / cardsPerPage); i++) {
-    pageNumbers.push(i);
-  }
+import { usePagination } from '../../../hooks/use-pagination';
 
+export default function Pagination({ cardsPerPage, totalCards, currentPage, paginate }) {
+  const paginationRange = usePagination({
+    currentPage,
+    totalCards,
+    cardsPerPage,
+  });
   const handleClick = number => {
     window.scrollTo({
       top: 200,
@@ -14,22 +16,28 @@ export default function Pagination({ cardsPerPage, totalCards, currentPage, pagi
     });
     paginate(number);
   };
+
   return (
     <nav>
       <ul className="list-none flex flex-wrap justify-center">
-        {pageNumbers.map(number => (
-          <li
-            key={number}
-            onClick={() => handleClick(number)}
-            className={cx(
-              'mx-2 w-7 h-auto rounded-lg text-lg text-center cursor-pointer',
-              'duration-150 ease-in-out hover:bg-substrateDark hover:text-white',
-              {
-                'bg-substrateDark text-white': number === currentPage,
-              }
+        {paginationRange.map((value, index) => (
+          <li key={index}>
+            {typeof value === 'number' ? (
+              <button
+                onClick={() => handleClick(value)}
+                className={cx(
+                  'mx-2 w-7 h-auto rounded-lg text-lg text-center cursor-pointer',
+                  'duration-150 ease-in-out hover:bg-substrateDark hover:text-white',
+                  {
+                    'bg-substrateDark text-white': value === currentPage,
+                  }
+                )}
+              >
+                {value}
+              </button>
+            ) : (
+              <span className={cx('mx-2 w-7 h-auto text-lg text-center')}>...</span>
             )}
-          >
-            {number}
           </li>
         ))}
       </ul>

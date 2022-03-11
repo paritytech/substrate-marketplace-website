@@ -50,8 +50,6 @@ export default function CardsContainer({ data, section, selectedVersion, searchQ
   useEffect(() => {
     displayedData.length > 0 ? setDataAvailable(true) : setDataAvailable(false);
     displayedData.length === 0 ? setNoResults(true) : setNoResults(false);
-    /* on incoming data change (on search or category 
-       change), resetting pagination                 */
     paginate(1);
   }, [displayedData]);
 
@@ -59,32 +57,35 @@ export default function CardsContainer({ data, section, selectedVersion, searchQ
     <>
       {dataAvailable ? (
         <>
-          <div
-            className={cx('mb-8 w-1/1 grid md:grid-cols-2 2xl:grid-cols-3', {
-              ' gap-y-8 md:gap-x-6': section != 'projects',
-            })}
-          >
-            {currentCards.map((each, index) => (
-              <div key={index}>
-                {section === 'projects' ? (
-                  <ProjectCard
-                    name={each.name}
-                    categories={each.categories}
-                    stars={each.listingInsights.stars}
-                    description={each.description}
-                  />
-                ) : (
-                  <Card
-                    section={section}
-                    name={each.name}
-                    version={each.version}
-                    authors={each.authors}
-                    description={each.description}
-                  />
-                )}
-              </div>
-            ))}
+          <div className="lg:min-h-[800px]">
+            <div
+              className={cx('mb-8 w-1/1 grid md:grid-cols-2 2xl:grid-cols-3', {
+                ' gap-y-8 md:gap-x-6': section != 'projects',
+              })}
+            >
+              {currentCards.map((each, index) => (
+                <div key={index}>
+                  {section === 'projects' ? (
+                    <ProjectCard
+                      name={each.name}
+                      categories={each.categories}
+                      stars={each.listingInsights.stars}
+                      description={each.description}
+                    />
+                  ) : (
+                    <Card
+                      section={section}
+                      name={each.name}
+                      version={each.version}
+                      authors={each.authors}
+                      description={each.description}
+                    />
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
+
           {displayedData.length > 12 && (
             <Pagination
               cardsPerPage={cardsPerPage}

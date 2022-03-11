@@ -15,20 +15,20 @@ export default function SingularPage({ pageContext }) {
   const [selectedVersion, setSelectedVersion] = useState('VERSION_3_0');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [compMounted, setCompMounted] = useState(false);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const category = urlParams.get('category');
     category && setSelectedCategory(category);
+    setCompMounted(true);
   }, []);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
-    if (selectedCategory !== 'all') {
+    if (compMounted) {
       urlParams.set('category', selectedCategory);
       history.pushState(null, null, '?' + urlParams.toString());
-    } else {
-      history.pushState('', document.title, location.pathname);
     }
   }, [selectedCategory]);
 
@@ -49,7 +49,7 @@ export default function SingularPage({ pageContext }) {
           <LocalSearch section={section} searchQuer={searchQuery} setSearchQuery={setSearchQuery} />
         </div>
       </Section>
-      <Section>
+      <Section className="lg:pb-20">
         <div className="lg:flex">
           <Filters
             categories={categories}
