@@ -48,6 +48,7 @@ export const query = graphql`
           frontmatter {
             title
             link
+            order
             description
             image {
               childImageSharp {

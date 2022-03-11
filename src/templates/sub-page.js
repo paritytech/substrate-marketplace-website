@@ -9,7 +9,6 @@ import LocalSearch from '../components/layout/sub-pages/LocalSearch';
 import Layout from '../components/site/Layout';
 import NavBreadcrumb from '../components/site/NavBreadcrumb';
 import SEO from '../components/site/SEO';
-import { urlParams } from '../utils/browser';
 
 export default function SingularPage({ pageContext }) {
   const { categories, section, result } = pageContext;
@@ -19,12 +18,14 @@ export default function SingularPage({ pageContext }) {
   const [compMounted, setCompMounted] = useState(false);
 
   useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
     const category = urlParams.get('category');
     category && setSelectedCategory(category);
     setCompMounted(true);
   }, []);
 
   useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
     if (compMounted) {
       urlParams.set('category', selectedCategory);
       history.pushState(null, null, '?' + urlParams.toString());
