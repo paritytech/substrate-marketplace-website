@@ -77,7 +77,7 @@ const createRuntimePages = async ({ graphql, actions }) => {
   /* Aggregated Runtimes siteurl.com/runtimes */
   createPage({
     path: `/${section}/`,
-    component: path.resolve(`./src/templates/sub-page.js`),
+    component: path.resolve(`./src/templates/list.js`),
     context: {
       result,
       categories,

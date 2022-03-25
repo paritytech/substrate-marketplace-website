@@ -2,33 +2,34 @@
 import { graphql } from 'gatsby';
 import React, { useEffect, useState } from 'react';
 
+import CardsContainer from '../components/layout/list-template/CardsContainer';
+import Filters from '../components/layout/list-template/Filters';
+import LocalSearch from '../components/layout/list-template/LocalSearch';
 import Section from '../components/layout/Section';
-import CardsContainer from '../components/layout/sub-pages/CardsContainer';
-import Filters from '../components/layout/sub-pages/Filters';
-import LocalSearch from '../components/layout/sub-pages/LocalSearch';
 import Layout from '../components/site/Layout';
 import NavBreadcrumb from '../components/site/NavBreadcrumb';
 import SEO from '../components/site/SEO';
 
-export default function SingularPage({ pageContext }) {
+export default function ListTemplate({ pageContext, location }) {
+  const currentUrl = location.href || 'https://example.org';
+  const searchParams = new URL(currentUrl).searchParams;
+  const activeCategory = searchParams.get('category');
+
   const { categories, section, result } = pageContext;
   const [selectedVersion, setSelectedVersion] = useState('VERSION_3_0');
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('all');
-  const [compMounted, setCompMounted] = useState(false);
+
+  const [selectedCategory, setSelectedCategory] = useState('');
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const category = urlParams.get('category');
-    category && setSelectedCategory(category);
-    setCompMounted(true);
+    activeCategory && setSelectedCategory(activeCategory);
   }, []);
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    if (compMounted) {
-      urlParams.set('category', selectedCategory);
-      history.pushState(null, null, '?' + urlParams.toString());
+    const url = currentUrl.split('?');
+    if (selectedCategory) {
+      if (selectedCategory === 'all') history.replaceState(null, null, url[0]);
+      else history.replaceState(null, null, '?category=' + selectedCategory.toString());
     }
   }, [selectedCategory]);
 
