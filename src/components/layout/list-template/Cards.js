@@ -6,7 +6,7 @@ import Icon from '../../default/Icon';
 import { Link } from '../../default/Link';
 import ProjectLogo from '../../ui/ProjectLogo';
 
-const Card = ({ name, section, version, authors, description }) => {
+const Card = ({ name, section, version, authors, description, stars }) => {
   return (
     <Link to={`/${section}/${slugify(name)}/`}>
       <div className="relative h-44 px-4 py-3 bg-substrateGray-light dark:bg-substrateDark rounded-md shadow-xl  duration-75 ease-in-out hover:scale-105">
@@ -14,8 +14,18 @@ const Card = ({ name, section, version, authors, description }) => {
           {version}
         </div>
         <h5 className="mb-2 truncate w-60">{name}</h5>
-        <p className="text-sm mb-4">{authors ? authors : 'N/A'}</p>
-        <p className="text-sm mb-0 h-20 line-clamp-4">{description}</p>
+        <div className="flex items-center mb-4">
+          {authors && <span className="text-sm mr-4">{authors}</span>}
+          <div className="flex items-center h-6">
+            {!authors && stars > 0 && (
+              <>
+                <Icon name="star" className="h-[14px] w-[14px] mr-1 fill-current text-substrateDark dark:text-white" />
+                <span>{stars}</span>
+              </>
+            )}
+          </div>
+        </div>
+        <p className="text-sm mb-0 h-16 line-clamp-3">{description}</p>
       </div>
     </Link>
   );

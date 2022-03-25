@@ -85,7 +85,7 @@ const createPalletPages = async ({ graphql, actions }) => {
   /* Aggregated Pallets siteurl.com/pallets */
   createPage({
     path: `/${section}/`,
-    component: path.resolve(`./src/templates/sub-page.js`),
+    component: path.resolve(`./src/templates/list.js`),
     context: {
       result,
       categories,

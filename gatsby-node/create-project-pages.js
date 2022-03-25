@@ -75,7 +75,7 @@ const createProjectPages = async ({ graphql, actions }) => {
   /* Aggregated Projects siteurl.com/projects */
   createPage({
     path: `/${section}/`,
-    component: path.resolve(`./src/templates/sub-page.js`),
+    component: path.resolve(`./src/templates/list.js`),
     context: {
       result,
       categories,

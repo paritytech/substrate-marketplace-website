@@ -38,7 +38,9 @@ export default function CardsContainer({ data, section, selectedVersion, searchQ
 
   useEffect(() => {
     displayedData.length > 0 ? setDataAvailable(true) : setDataAvailable(false);
-    displayedData.length === 0 ? setNoResults(true) : setNoResults(false);
+    setTimeout(() => {
+      displayedData.length === 0 ? setNoResults(true) : setNoResults(false);
+    }, 100);
   }, [displayedData]);
 
   return (
@@ -63,6 +65,7 @@ export default function CardsContainer({ data, section, selectedVersion, searchQ
                   version={each.version}
                   authors={each.authors}
                   description={each.description}
+                  stars={each.listingInsights.stars}
                 />
               )}
             </div>
