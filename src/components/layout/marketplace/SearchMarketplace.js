@@ -4,9 +4,9 @@ import useComponentVisible from '../../../hooks/use-component-visible';
 import useSearchData from '../../../hooks/use-search-data';
 import Modal from '../../ui/Modal';
 import Checkbox from '../../ui/search/Checkbox';
-import Homepage from '../../ui/search/Homepage';
 import Input from '../../ui/search/Input';
 import ResultsContainer from '../../ui/search/ResultsContainer';
+import SearchButton from '../../ui/search/SearchButton';
 
 export default function SearchMarketplace() {
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
@@ -17,6 +17,11 @@ export default function SearchMarketplace() {
   const [isRuntimesChecked, setIsRuntimesChecked] = useState(false);
   const [results, setResults] = useState([]);
   const [displayedResults, setDisplayedResults] = useState([]);
+
+  const handleSearchOpen = () => {
+    setIsComponentVisible(!isComponentVisible);
+    console.log(isComponentVisible);
+  };
 
   useEffect(() => {
     const sanitizedQuery = query.toLowerCase();
@@ -46,7 +51,7 @@ export default function SearchMarketplace() {
 
   return (
     <>
-      <Homepage isComponentVisible={isComponentVisible} setIsComponentVisible={setIsComponentVisible} />
+      <SearchButton handleSearchOpen={handleSearchOpen} />
       {isComponentVisible && (
         <Modal id={ref} closeModal={setIsComponentVisible}>
           <Input query={query} setQuery={setQuery} />
