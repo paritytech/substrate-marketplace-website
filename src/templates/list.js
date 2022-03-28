@@ -10,7 +10,7 @@ import Layout from '../components/site/Layout';
 import NavBreadcrumb from '../components/site/NavBreadcrumb';
 import SEO from '../components/site/SEO';
 
-export default function ListTemplate({ pageContext, location }) {
+export default function ListPageTemplate({ pageContext, location }) {
   const currentUrl = location.href || 'https://example.org';
   const searchParams = new URL(currentUrl).searchParams;
   const activeCategory = searchParams.get('category');
@@ -22,7 +22,7 @@ export default function ListTemplate({ pageContext, location }) {
   const [selectedCategory, setSelectedCategory] = useState('');
 
   useEffect(() => {
-    activeCategory && setSelectedCategory(activeCategory);
+    setSelectedCategory(activeCategory || 'all');
   }, []);
 
   useEffect(() => {
@@ -47,7 +47,7 @@ export default function ListTemplate({ pageContext, location }) {
           <hr className="hidden lg:block" />
         </div>
         <div className="flex items-center border-b mb-9 lg:ml-52">
-          <LocalSearch section={section} searchQuer={searchQuery} setSearchQuery={setSearchQuery} />
+          <LocalSearch section={section} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
         </div>
       </Section>
       <Section>
