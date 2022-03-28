@@ -20,7 +20,6 @@ export default function SearchMarketplace() {
 
   const handleSearchOpen = () => {
     setIsComponentVisible(!isComponentVisible);
-    console.log(isComponentVisible);
   };
 
   useEffect(() => {
