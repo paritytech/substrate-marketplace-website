@@ -10,7 +10,7 @@ import SEO from '../components/site/SEO';
 import ProjectLogo from '../components/ui/ProjectLogo';
 import { isBrowser } from '../utils/browser';
 
-export default function SingularPage({ pageContext }) {
+export default function SingularPageTemplate({ pageContext }) {
   const { node, section } = pageContext;
   const { name, description, readmeContent } = node;
   const cleanHtml = isBrowser ? DOMPurify.sanitize(readmeContent) : readmeContent;
