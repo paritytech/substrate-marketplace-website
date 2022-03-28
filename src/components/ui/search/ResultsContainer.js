@@ -16,11 +16,7 @@ export default function ResultsContainer({ query, setQuery, results }) {
   return (
     <div className="h-full text-left">
       <div
-        className={cx(
-          'text-sm font-bold mb-3 animate-fade-in uppercase',
-          { invisible: query.length === 0 },
-          { visible: query.length > 0 }
-        )}
+        className={cx('text-sm font-bold uppercase', { invisible: query.length === 0 }, { visible: query.length > 0 })}
       >
         {results.length} results
       </div>

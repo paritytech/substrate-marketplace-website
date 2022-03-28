@@ -5,7 +5,7 @@ import { Link } from '../../default/Link';
 
 const ResultItem = ({ error, section, title }) => (
   <div
-    className={cx(`group px-4 pt-2 pb-3 mr-3 mb-2 bg-substrateGray dark:bg-gray-700  rounded animate-fade-in-down`, {
+    className={cx(`group px-4 pt-2 pb-3 mr-3 mb-2 bg-substrateGray dark:bg-gray-700 rounded animate-fade-in-down`, {
       'group-hover:font-bold group-hover:text-white hover:bg-substrateGreen': !error,
     })}
   >
