@@ -194,17 +194,23 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: `gatsby-plugin-netlify-cms`,
-      options: {
-        /* call the js file, instead of yaml */
-        manualInit: true,
-        /* Netlify CMS customization code directory. */
-        modulePath: `${__dirname}/src/cms/index.js`,
-        /* use netlify-identity widget to login */
-        enableIdentityWidget: true,
-      },
-    },
+
+    /*
+      bypass netlify CMS, not needed in current version; inherited from substrate-website codebase
+      to be removed later or moved globally or moved to gastby substrate-plugin
+    /*
+    // {
+    //   resolve: `gatsby-plugin-netlify-cms`,
+    //   options: {
+    //     /* call the js file, instead of yaml */
+    //     manualInit: true,
+    //     /* Netlify CMS customization code directory. */
+    //     modulePath: `${__dirname}/src/cms/index.js`,
+    //     /* use netlify-identity widget to login */
+    //     enableIdentityWidget: true,
+    //   },
+    // },
+
     {
       resolve: `gatsby-plugin-breadcrumb`,
       options: {
