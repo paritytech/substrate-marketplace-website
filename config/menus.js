@@ -1,6 +1,4 @@
-const WEBSITE_URL = process.env.GATSBY_WEBSITE_URL;
-const DOCS_URL = process.env.GATSBY_DOCS_URL;
-// const MARKETPLACE_URL = process.env.GATSBY_MARKETPLACE_URL;
+const { WEBSITE_URL, DOCS_URL, CAREERS_URL } = require('./webConsts.js');
 
 /* the main menu, ids of items must match
    the submenu's key of this js object */
@@ -127,8 +125,8 @@ const opportunities = [
     id: 'ecosystem.opportunities.grants',
   },
   {
-    url: WEBSITE_URL + '/ecosystem/opportunities/jobs',
-    id: 'ecosystem.opportunities.jobs',
+    url: CAREERS_URL,
+    id: 'ecosystem.opportunities.careers',
   },
 ];
 
