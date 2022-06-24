@@ -49,32 +49,28 @@ const technology = [
 
 const developers = [
   {
-    url: DOCS_URL,
+    url: WEBSITE_URL + '/developers/',
     id: 'developers.home',
   },
   {
-    url: DOCS_URL + '/v3/getting-started/overview',
+    url: DOCS_URL,
     id: 'developers.docs',
   },
   {
-    url: DOCS_URL + '/how-to-guides/v3',
-    id: 'developers.how-to-guides',
-  },
-  {
-    url: DOCS_URL + '/tutorials/v3',
-    id: 'developers.tutorials',
-  },
-  {
-    url: '',
-    id: 'developers.marketplace',
-  },
-  {
-    url: DOCS_URL + '/rustdocs',
+    url: 'https://paritytech.github.io/substrate/master/sc_service/',
     id: 'developers.rustdocs',
   },
   {
-    url: DOCS_URL + '/playground',
+    url: '/',
+    id: 'developers.marketplace',
+  },
+  {
+    url: WEBSITE_URL + '/developers/playground/',
     id: 'developers.playground',
+  },
+  {
+    url: WEBSITE_URL + '/developers/smart-contracts/',
+    id: 'developers.smart-contracts',
   },
 ];
 
@@ -113,6 +109,10 @@ const ecosystem = [
     id: 'ecosystem.connect',
     child: 'connect',
   },
+  {
+    url: WEBSITE_URL + '/ecosystem/square-one',
+    id: 'ecosystem.square-one',
+  },
 ];
 
 /* child menus for sub menus, matching the parent menu items with "child: id" */
@@ -127,8 +127,8 @@ const opportunities = [
     id: 'ecosystem.opportunities.grants',
   },
   {
-    url: 'https://careers.substrate.io',
-    id: 'ecosystem.opportunities.careers',
+    url: WEBSITE_URL + '/ecosystem/opportunities/jobs',
+    id: 'ecosystem.opportunities.jobs',
   },
 ];
 
@@ -136,6 +136,10 @@ const resources = [
   {
     url: WEBSITE_URL + '/ecosystem/resources/seminar',
     id: 'ecosystem.resources.seminar',
+  },
+  {
+    url: WEBSITE_URL + '/ecosystem/resources/past-seminars',
+    id: 'ecosystem.resources.past-seminars',
   },
   {
     url: 'https://github.com/substrate-developer-hub/awesome-substrate/blob/master/README.md',
