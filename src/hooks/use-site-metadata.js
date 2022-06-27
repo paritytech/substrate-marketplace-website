@@ -16,7 +16,6 @@ export const useSiteMetadata = () => {
             websiteUrl
             docsUrl
             marketplaceUrl
-            docsVersion
             author
             pressEmail
             email

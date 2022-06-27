@@ -2,6 +2,7 @@ import cx from 'classnames';
 import { Link } from 'gatsby';
 import React, { useEffect, useState } from 'react';
 
+import { WEBSITE_URL } from '../../../config/webConsts';
 import useScrollListener from '../../hooks/use-scroll-listener';
 import Icon from '../default/Icon';
 import Logo from '../site/Logo';
@@ -30,7 +31,7 @@ const Header = ({ mode, header }) => {
 
   return (
     <header
-      className={cx('sticky top-0 z-10 border-b border-gray-200 dark:border-substrateDarkThemeGrey', {
+      className={cx('sticky top-0 z-40 border-b border-gray-200 dark:border-substrateDarkThemeGrey', {
         'border-transparent dark:border-transparent': mode === 'full' && !isScrolled,
         'bg-transparent transition-colors': header === 'home' && !isScrolled,
         'bg-white dark:bg-substrateDarkest': header === 'default' || (header === 'home' && isScrolled),
@@ -46,7 +47,7 @@ const Header = ({ mode, header }) => {
           })}
         >
           <div className="w-40 relative transform transition-all duration-300 ease-in-out hover:opacity-50">
-            <Link to="/">
+            <Link to={WEBSITE_URL}>
               <Logo />
             </Link>
           </div>
