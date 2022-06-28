@@ -4,8 +4,8 @@ const { WEBSITE_URL, DOCS_URL, MARKETPLACE_URL, CAREERS_URL } = require('./webCo
 module.exports = {
   menus,
   title: `Substrate_ Marketplace`,
-  title_meta: `Substrate enables developers to quickly and easily build future-proof blockchains optimized for any use case.`,
-  description: `Substrate enables developers to quickly and easily build future-proof blockchains optimized for any use case.`,
+  title_meta: `Discover & share reusable pallets for use with Substrate.`,
+  description: `Browse through open source modules that give your blockchain specific capabilities & examples of the ecosystem projects enabled from combining the pallets.`,
   image_og: `${MARKETPLACE_URL}/img/substrate_og.png`,
   siteUrl: MARKETPLACE_URL,
   websiteUrl: WEBSITE_URL,
