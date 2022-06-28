@@ -14,7 +14,7 @@ export default function Home({ data }) {
     <Layout mode="full">
       <SEO title="Home" />
       <Section className="sm:text-center">
-        <h1 className="mb-8 text-5xl lg:text-6xl md:text-6xl font-title font-extrabold">Substrate Marketplace</h1>
+        <h1 className="mb-8 text-4xl lg:text-6xl md:text-6xl font-title font-extrabold">Substrate Marketplace</h1>
         <div className="sm:max-w-lg mx-auto mb-10">
           <p className="max-w-lg text-xl">
             Where blockchain innovators discover & share reusable pallets for use with Substrate, the open-source
