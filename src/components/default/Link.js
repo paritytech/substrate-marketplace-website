@@ -5,6 +5,8 @@ import { CAREERS_URL, DOCS_URL, MARKETPLACE_URL, WEBSITE_URL } from '../../../co
 import { ThemeContext } from '../../contexts/ThemeContext';
 
 const addTrailingSlash = uri => {
+  if (!uri) return;
+
   const addSlash = uri => {
     uri += uri.endsWith('/') ? '' : '/';
     return uri;
