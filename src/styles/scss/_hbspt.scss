@@ -88,27 +88,6 @@
   }
 }
 
-#hs-newsletter-form.widget {
-  .hs_email,
-  .hs_submit {
-    @apply max-w-lg w-full;
-  }
-
-  form {
-    @apply flex flex-col gap-6 mb-6;
-
-    .hs-input[type='email'] {
-      @apply dark:bg-substrateDarkest dark:border-substrateGray-dark dark:placeholder-white text-black dark:text-white max-w-lg h-16 bg-white  border-black;
-
-      border-width: 3px;
-    }
-
-    input[type='submit'] {
-      @apply h-16 max-w-lg;
-    }
-  }
-}
-
 #hs-newsletter-form {
   flex-basis: 100%;
 
@@ -116,8 +95,14 @@
     margin: 0 !important;
   }
 
-  .hs_error_rollup {
-    display: none;
+  .hs-error-msgs {
+    @apply h-0 m-0;
+  }
+
+  .hs_email {
+    > label {
+      display: none;
+    }
   }
 
   form {
@@ -126,6 +111,10 @@
     .hs_email,
     .hs_submit {
       @apply max-w-sm w-full;
+    }
+
+    > :not(.hs_email):not(.hs_submit):not(.hs-error-msgs) {
+      display: none;
     }
 
     .hs-input[type='email'] {
@@ -144,10 +133,6 @@
       @apply w-full bg-substrateGreen hover:bg-white text-white hover:text-substrateGreen items-center px-9 text-xl font-bold transition duration-200 focus:outline-none focus:ring-2 rounded-lg border-substrateGreen h-12 max-w-sm;
 
       border-width: 3px;
-    }
-
-    label {
-      display: none;
     }
   }
 }
