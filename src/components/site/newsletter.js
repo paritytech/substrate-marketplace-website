@@ -1,34 +1,19 @@
 import cn from 'classnames';
-import React, { useCallback, useEffect, useState } from 'react';
+import React from 'react';
 import HubspotForm from 'react-hubspot-form';
 
+import { useHubspot } from '../../hooks/use-hubspot';
 import { useSiteMetadata } from '../../hooks/use-site-metadata';
 import Icon from '../default/Icon';
 import { Link } from '../default/Link';
 import LoadingAnimation from '../ui/LoadingAnimation';
 
 export default function Newsletter({ layout = 'default' }) {
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [isFormReady, setIsFormReady] = useState(false);
   const FORM_ID = 'd48f3940-0c86-4493-978b-31c5c7047b8e';
   const { siteMetadata } = useSiteMetadata();
+  const { formSubmitted, isFormReady, hubspotFormRef, onFormReady } = useHubspot(FORM_ID);
 
   const widget = layout === 'widget';
-
-  const handler = useCallback(event => {
-    if (event.data.type === 'hsFormCallback' && event.data.eventName === 'onFormSubmitted') {
-      if (event.data.id === FORM_ID) {
-        setFormSubmitted(true);
-      }
-    }
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener('message', handler);
-    return () => {
-      window.removeEventListener('message', handler);
-    };
-  }, [handler]);
 
   return (
     <div
@@ -55,9 +40,10 @@ export default function Newsletter({ layout = 'default' }) {
           </p>
           <div id="hs-newsletter-form" className={widget ? 'widget' : ''}>
             <HubspotForm
+              ref={hubspotFormRef}
               portalId="7592558"
               formId={FORM_ID}
-              onReady={() => setIsFormReady(true)}
+              onReady={onFormReady}
               loading={
                 <div className={cn('h-full', { 'py-10 px-10 px-mb-10': widget })}>
                   <LoadingAnimation />
@@ -79,7 +65,7 @@ export default function Newsletter({ layout = 'default' }) {
             />
             {isFormReady && (
               <p
-                className={cn('text-sm mt-6 lg:mt-4 lg:ml-auto', {
+                className={cn('text-sm mt-6 lg:mt-4 lg:mx-auto xl:ml-auto xl:mr-0', {
                   'mb-0 max-w-sm lg:text-center': !widget,
                   'mb-6': widget,
                 })}
