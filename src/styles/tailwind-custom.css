@@ -28,7 +28,7 @@ p {
   height: 2px;
   left: 0;
   position: absolute;
-  @apply bg-substrateBlue dark:text-substrateDarkThemeBlue;
+  @apply bg-substrateBlue dark:bg-substrateDarkThemeBlue;
   transition: width 0.3s ease 0s, left 0.3s ease 0s;
   width: 0;
 }
@@ -209,4 +209,8 @@ div[aria-label='animation'] {
 
 .banner a {
   @apply text-substrateDarkThemeBlue dark:text-substrateBlue;
+}
+
+.banner a::after {
+  @apply bg-substrateDarkThemeBlue dark:bg-substrateBlue;
 }
