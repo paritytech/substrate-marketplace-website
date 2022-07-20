@@ -70,6 +70,14 @@ const developers = [
     url: WEBSITE_URL + '/developers/smart-contracts/',
     id: 'developers.smart-contracts',
   },
+  {
+    url: WEBSITE_URL + '/developers/substrate-connect',
+    id: 'developers.substrate-connect',
+  },
+  {
+    url: WEBSITE_URL + '/developers/rococo-network',
+    id: 'developers.rococo-network',
+  },
 ];
 
 const vision = [
@@ -175,13 +183,6 @@ const legal = [
   },
 ];
 
-const extra = [
-  {
-    url: WEBSITE_URL + '/substrate-connect',
-    id: 'extra.substrate-connect',
-  },
-];
-
 module.exports = {
   main,
   technology,
@@ -191,6 +192,5 @@ module.exports = {
   opportunities,
   resources,
   connect,
-  extra,
   legal,
 };
