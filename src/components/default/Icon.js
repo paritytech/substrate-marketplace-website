@@ -54,6 +54,7 @@ import so2 from '../../images/svg/social/so2.svg';
 import twitter from '../../images/svg/social/twitter.svg';
 import twitter2 from '../../images/svg/social/twitter2.svg';
 import youtube from '../../images/svg/social/youtube.svg';
+import stackExchange from '../../images/svg/stack-exchange.svg';
 import subconnectBrowserTab from '../../images/svg/subconnectBrowserTab.svg';
 import substrate from '../../images/svg/substrate.svg';
 import adaptable from '../../images/svg/technology/adaptable.svg';
@@ -100,6 +101,7 @@ import starWithCircle from '../../images/svg/ui/star.svg';
 import sun from '../../images/svg/ui/sun.svg';
 import w3fLogo from '../../images/svg/w3f-logo.svg';
 import waLogo from '../../images/svg/wa-logo.svg';
+
 const iconsMap = {
   /* home */
   developers: developers,
@@ -172,6 +174,7 @@ const iconsMap = {
   twitter2: twitter2,
   'stack-overflow': so,
   'stack-overflow-2': so2,
+  'stack-exchange': stackExchange,
   element: element,
   element2: element2,
   youtube: youtube,
