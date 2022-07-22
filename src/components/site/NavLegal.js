@@ -22,9 +22,9 @@ const HeaderNav = () => {
         </Link>
         <Link
           className="mr-11 md:mr-0 md:ml-9 transform transition-all duration-300 ease-in-out hover:opacity-50"
-          to={siteMetadata.stackoverflow}
+          to={siteMetadata.stackexchange}
         >
-          <Icon name="stack-overflow" />
+          <Icon name="stack-exchange" />
         </Link>
         <Link
           className="mr-11 md:mr-0 md:ml-9 transform transition-all duration-300 ease-in-out hover:opacity-50"
