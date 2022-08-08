@@ -1,6 +1,6 @@
+import { useComponentVisible } from 'gatsby-plugin-substrate';
 import React, { useEffect, useState } from 'react';
 
-import useComponentVisible from '../../../hooks/use-component-visible';
 import useSearchData from '../../../hooks/use-search-data';
 import Modal from '../../ui/Modal';
 import Checkbox from '../../ui/search/Checkbox';

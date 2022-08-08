@@ -1,14 +1,10 @@
 import DOMPurify from 'dompurify';
 import { graphql } from 'gatsby';
+import { isBrowser, Layout, NavBreadcrumb, Section, SEO } from 'gatsby-plugin-substrate';
 import React from 'react';
 
-import Section from '../components/layout/Section';
 import Sidebar from '../components/layout/single-template/Sidebar';
-import Layout from '../components/site/Layout';
-import NavBreadcrumb from '../components/site/NavBreadcrumb';
-import SEO from '../components/site/SEO';
 import ProjectLogo from '../components/ui/ProjectLogo';
-import { isBrowser } from '../utils/browser';
 
 export default function SingularPageTemplate({ pageContext }) {
   const { node, section } = pageContext;
@@ -22,7 +18,7 @@ export default function SingularPageTemplate({ pageContext }) {
         <article className="lg:flex">
           <div className="lg:flex-grow mb-10 lg:mb-20 pr-4 underline-animate underline-animate-thin">
             <div className="mb-12 capitalize">
-              <NavBreadcrumb />
+              <NavBreadcrumb hiddenCrumbs={[]} />
             </div>
             <div className="mb-12">
               <div className="flex flex-col lg:flex-row lg:items-center">

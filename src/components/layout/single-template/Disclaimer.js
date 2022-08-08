@@ -1,6 +1,6 @@
+import { useComponentVisible } from 'gatsby-plugin-substrate';
 import React from 'react';
 
-import useComponentVisible from '../../../hooks/use-component-visible';
 import { useDisclaimer } from '../../../hooks/use-disclaimer-text';
 import Modal from '../../ui/Modal';
 

@@ -1,14 +1,11 @@
 // import cx from 'classnames';
 import { graphql } from 'gatsby';
+import { Layout, NavBreadcrumb, Section, SEO } from 'gatsby-plugin-substrate';
 import React, { useEffect, useState } from 'react';
 
 import CardsContainer from '../components/layout/list-template/CardsContainer';
 import Filters from '../components/layout/list-template/Filters';
 import LocalSearch from '../components/layout/list-template/LocalSearch';
-import Section from '../components/layout/Section';
-import Layout from '../components/site/Layout';
-import NavBreadcrumb from '../components/site/NavBreadcrumb';
-import SEO from '../components/site/SEO';
 
 export default function ListPageTemplate({ pageContext, location }) {
   const currentUrl = location.href || 'https://example.org';
@@ -38,7 +35,7 @@ export default function ListPageTemplate({ pageContext, location }) {
       <SEO title={section.charAt(0).toUpperCase() + section.slice(1)} />
       <Section className="mb-9">
         <div className="mb-12 underline-animate underline-animate-thin">
-          <NavBreadcrumb />
+          <NavBreadcrumb hiddenCrumbs={[]} />
         </div>
         <div className="mb-12">
           <div className="flex flex-col lg:flex-row lg:items-center lg:mb-8">

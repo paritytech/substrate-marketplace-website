@@ -1,6 +1,5 @@
+import { Icon } from 'gatsby-plugin-substrate';
 import React, { useEffect } from 'react';
-
-import Icon from '../default/Icon';
 
 export default function Modal({ id, children, closeModal }) {
   useEffect(() => {

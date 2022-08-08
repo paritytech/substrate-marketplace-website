@@ -1,6 +1,5 @@
+import { Icon } from 'gatsby-plugin-substrate';
 import React from 'react';
-
-import Icon from '../../default/Icon';
 
 export default function LocalSearch({ setSearchQuery, searchQuery, section }) {
   const handleChange = event => {
@@ -15,7 +14,7 @@ export default function LocalSearch({ setSearchQuery, searchQuery, section }) {
         value={searchQuery}
         onChange={event => handleChange(event)}
       />
-      <Icon name="search" className="fill-current text-substrateGray-dark dark:text-substrateWhite" />
+      <Icon name="search" className="fill-current text-substrateGray-dark dark:text-substrateWhite w-4 h-4" />
     </>
   );
 }

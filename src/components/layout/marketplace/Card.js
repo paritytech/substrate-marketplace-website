@@ -1,8 +1,8 @@
 import cx from 'classnames';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { Link } from 'gatsby-plugin-substrate';
 import React from 'react';
 
-import { Link } from '../../default/Link';
 import SecondaryButton from '../../ui/SecondaryButton';
 
 export default function Card({ title, text, link, image }) {

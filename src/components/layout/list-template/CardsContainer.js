@@ -1,7 +1,7 @@
 import cx from 'classnames';
+import { Icon } from 'gatsby-plugin-substrate';
 import React, { useEffect, useState } from 'react';
 
-import Icon from '../../default/Icon';
 import { Card, ProjectCard } from './Cards';
 
 export default function CardsContainer({ data, section, selectedVersion, searchQuery, selectedCategory }) {
