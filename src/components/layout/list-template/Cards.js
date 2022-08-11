@@ -1,9 +1,8 @@
 import cx from 'classnames';
+import { Icon, Link } from 'gatsby-plugin-substrate';
 import React from 'react';
 
 import { slugify } from '../../../utils/url';
-import Icon from '../../default/Icon';
-import { Link } from '../../default/Link';
 import ProjectLogo from '../../ui/ProjectLogo';
 
 const Card = ({ name, section, version, authors, description, stars }) => {
@@ -19,7 +18,10 @@ const Card = ({ name, section, version, authors, description, stars }) => {
           <div className="flex items-center h-6">
             {!authors && stars > 0 && (
               <>
-                <Icon name="star" className="h-[14px] w-[14px] mr-1 fill-current text-substrateDark dark:text-white" />
+                <Icon
+                  name="star-filled"
+                  className="h-[14px] w-[14px] mr-1 fill-current text-substrateDark dark:text-white"
+                />
                 <span>{stars}</span>
               </>
             )}
@@ -44,7 +46,7 @@ function ProjectCard({ stars, categories, description, name }) {
         {stars > 0 && (
           <div className="absolute top-6 right-6 font-medium">
             <div className="flex items-center">
-              <Icon name="star" className="mr-2 fill-current text-substrateDark dark:text-white" />
+              <Icon name="star-filled" className="mr-2 fill-current text-substrateDark dark:text-white" />
               <span>{stars}</span>
             </div>
           </div>

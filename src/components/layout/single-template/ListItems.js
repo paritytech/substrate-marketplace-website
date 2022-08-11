@@ -1,8 +1,6 @@
 import cx from 'classnames';
+import { Icon, Link } from 'gatsby-plugin-substrate';
 import React, { useState } from 'react';
-
-import Icon from '../../default/Icon';
-import { Link } from '../../default/Link';
 
 const listClass = 'ml-2';
 const unorderedListClass = 'list-none';

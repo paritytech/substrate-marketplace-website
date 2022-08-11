@@ -1,8 +1,6 @@
 import cx from 'classnames';
+import { Icon, useComponentVisible } from 'gatsby-plugin-substrate';
 import React from 'react';
-
-import useComponentVisible from '../../../hooks/use-component-visible';
-import Icon from '../../default/Icon';
 
 const VersionItem = ({ selectedVersion, setSelectedVersion, setIsComponentVisible, children, version }) => (
   <div

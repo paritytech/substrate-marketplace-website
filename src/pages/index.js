@@ -1,11 +1,9 @@
 import { graphql } from 'gatsby';
+import { Layout, Section, SEO } from 'gatsby-plugin-substrate';
 import React from 'react';
 
 import CardsList from '../components/layout/marketplace/CardsList';
 import SearchMarketplace from '../components/layout/marketplace/SearchMarketplace';
-import Section from '../components/layout/Section';
-import Layout from '../components/site/Layout';
-import SEO from '../components/site/SEO';
 
 export default function Home({ data }) {
   const { content } = data;

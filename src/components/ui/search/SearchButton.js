@@ -1,6 +1,5 @@
+import { Icon } from 'gatsby-plugin-substrate';
 import React from 'react';
-
-import Icon from '../../default/Icon';
 
 export default function SearchButton({ handleSearchOpen }) {
   return (
@@ -9,7 +8,7 @@ export default function SearchButton({ handleSearchOpen }) {
       onClick={handleSearchOpen}
     >
       <span className="font-bold text-white mb-0 mr-4">Search Marketplace</span>
-      <Icon name="searchIcon" className="h-4 w-4 lg:h-6 lg:w-6 fill-current text-white dark:text-white" />
+      <Icon name="search" className="h-4 w-4 lg:h-6 lg:w-6 fill-current text-white dark:text-white" />
     </button>
   );
 }

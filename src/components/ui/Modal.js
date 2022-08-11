@@ -1,6 +1,5 @@
+import { Icon } from 'gatsby-plugin-substrate';
 import React, { useEffect } from 'react';
-
-import Icon from '../default/Icon';
 
 export default function Modal({ id, children, closeModal }) {
   useEffect(() => {
@@ -19,7 +18,7 @@ export default function Modal({ id, children, closeModal }) {
           className="relative bg-white dark:bg-gray-900 w-full max-w-screen-sm h-auto py-12 px-10 rounded-lg border-2 border-substrateDark shadow-xl max-h-screen overflow-scroll"
         >
           <div className="absolute top-6 right-6 cursor-pointer" onClick={() => closeModal(false)}>
-            <Icon name="close-x" />
+            <Icon name="close-x" className="fill-current" />
           </div>
           {children}
         </div>
