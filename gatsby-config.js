@@ -63,7 +63,7 @@ module.exports = {
         // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
         fieldName: 'marketplace',
         // Url to query from
-        url: 'https://marketplace-api-staging.substrate.dev/graphql',
+        url: 'https://marketplace-api.substrate.dev/graphql',
       },
     },
 
