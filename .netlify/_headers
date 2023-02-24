@@ -1,0 +1,5 @@
+/*
+  Content-Security-Policy: frame-ancestors 'self' https://substrate-marketplace.netlify.app https://marketplace.substrate.io
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  
